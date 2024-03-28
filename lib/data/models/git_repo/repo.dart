@@ -1,179 +1,179 @@
+// To parse this JSON data, do
+//
+//     final gitRepository = gitRepositoryFromJson(jsonString);
+
 import 'dart:convert';
 
-import 'package:starflare/data/models/git_repo/repo_license.dart';
-import 'package:starflare/data/models/git_repo/repo_owner.dart';
+List<GitRepository> gitRepositoryFromJson(String str) =>
+    List<GitRepository>.from(
+        json.decode(str).map((x) => GitRepository.fromJson(x)));
 
-GitRepository repositoryFromJson(String str) => GitRepository.fromJson(
-      json.decode(str),
-    );
-
-String repositoryToJson(GitRepository data) => json.encode(
-      data.toJson(),
-    );
+String gitRepositoryToJson(List<GitRepository> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class GitRepository {
-  final int id;
-  final String nodeId;
-  final String name;
-  final String fullName;
-  final bool private;
-  final RepoOwner owner;
-  final String htmlUrl;
-  final String description;
-  final bool fork;
-  final String url;
-  final String forksUrl;
-  final String keysUrl;
-  final String collaboratorsUrl;
-  final String teamsUrl;
-  final String hooksUrl;
-  final String issueEventsUrl;
-  final String eventsUrl;
-  final String assigneesUrl;
-  final String branchesUrl;
-  final String tagsUrl;
-  final String blobsUrl;
-  final String gitTagsUrl;
-  final String gitRefsUrl;
-  final String treesUrl;
-  final String statusesUrl;
-  final String languagesUrl;
-  final String stargazersUrl;
-  final String contributorsUrl;
-  final String subscribersUrl;
-  final String subscriptionUrl;
-  final String commitsUrl;
-  final String gitCommitsUrl;
-  final String commentsUrl;
-  final String issueCommentUrl;
-  final String contentsUrl;
-  final String compareUrl;
-  final String mergesUrl;
-  final String archiveUrl;
-  final String downloadsUrl;
-  final String issuesUrl;
-  final String pullsUrl;
-  final String milestonesUrl;
-  final String notificationsUrl;
-  final String labelsUrl;
-  final String releasesUrl;
-  final String deploymentsUrl;
-  final DateTime createdAt;
-  final DateTime updatedAt;
-  final DateTime pushedAt;
-  final String gitUrl;
-  final String sshUrl;
-  final String cloneUrl;
-  final String svnUrl;
-  final String homepage;
-  final int size;
-  final int stargazersCount;
-  final int watchersCount;
-  final String language;
-  final bool hasIssues;
-  final bool hasProjects;
-  final bool hasDownloads;
-  final bool hasWiki;
-  final bool hasPages;
-  final bool hasDiscussions;
-  final int forksCount;
+  final int? id;
+  final String? nodeId;
+  final String? name;
+  final String? fullName;
+  final bool? private;
+  final Owner? owner;
+  final String? htmlUrl;
+  final String? description;
+  final bool? fork;
+  final String? url;
+  final String? forksUrl;
+  final String? keysUrl;
+  final String? collaboratorsUrl;
+  final String? teamsUrl;
+  final String? hooksUrl;
+  final String? issueEventsUrl;
+  final String? eventsUrl;
+  final String? assigneesUrl;
+  final String? branchesUrl;
+  final String? tagsUrl;
+  final String? blobsUrl;
+  final String? gitTagsUrl;
+  final String? gitRefsUrl;
+  final String? treesUrl;
+  final String? statusesUrl;
+  final String? languagesUrl;
+  final String? stargazersUrl;
+  final String? contributorsUrl;
+  final String? subscribersUrl;
+  final String? subscriptionUrl;
+  final String? commitsUrl;
+  final String? gitCommitsUrl;
+  final String? commentsUrl;
+  final String? issueCommentUrl;
+  final String? contentsUrl;
+  final String? compareUrl;
+  final String? mergesUrl;
+  final String? archiveUrl;
+  final String? downloadsUrl;
+  final String? issuesUrl;
+  final String? pullsUrl;
+  final String? milestonesUrl;
+  final String? notificationsUrl;
+  final String? labelsUrl;
+  final String? releasesUrl;
+  final String? deploymentsUrl;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+  final DateTime? pushedAt;
+  final String? gitUrl;
+  final String? sshUrl;
+  final String? cloneUrl;
+  final String? svnUrl;
+  final String? homepage;
+  final int? size;
+  final int? stargazersCount;
+  final int? watchersCount;
+  final String? language;
+  final bool? hasIssues;
+  final bool? hasProjects;
+  final bool? hasDownloads;
+  final bool? hasWiki;
+  final bool? hasPages;
+  final bool? hasDiscussions;
+  final int? forksCount;
   final dynamic mirrorUrl;
-  final bool archived;
-  final bool disabled;
-  final int openIssuesCount;
-  final RepoLicense license;
-  final bool allowForking;
-  final bool isTemplate;
-  final bool webCommitSignoffRequired;
-  final List<String> topics;
-  final String visibility;
-  final int forks;
-  final int openIssues;
-  final int watchers;
-  final String defaultBranch;
-  final int score;
+  final bool? archived;
+  final bool? disabled;
+  final int? openIssuesCount;
+  final License? license;
+  final bool? allowForking;
+  final bool? isTemplate;
+  final bool? webCommitSignoffRequired;
+  final List<String>? topics;
+  final Visibility? visibility;
+  final int? forks;
+  final int? openIssues;
+  final int? watchers;
+  final DefaultBranch? defaultBranch;
+  final double? score;
 
   GitRepository({
-    required this.id,
-    required this.nodeId,
-    required this.name,
-    required this.fullName,
-    required this.private,
-    required this.owner,
-    required this.htmlUrl,
-    required this.description,
-    required this.fork,
-    required this.url,
-    required this.forksUrl,
-    required this.keysUrl,
-    required this.collaboratorsUrl,
-    required this.teamsUrl,
-    required this.hooksUrl,
-    required this.issueEventsUrl,
-    required this.eventsUrl,
-    required this.assigneesUrl,
-    required this.branchesUrl,
-    required this.tagsUrl,
-    required this.blobsUrl,
-    required this.gitTagsUrl,
-    required this.gitRefsUrl,
-    required this.treesUrl,
-    required this.statusesUrl,
-    required this.languagesUrl,
-    required this.stargazersUrl,
-    required this.contributorsUrl,
-    required this.subscribersUrl,
-    required this.subscriptionUrl,
-    required this.commitsUrl,
-    required this.gitCommitsUrl,
-    required this.commentsUrl,
-    required this.issueCommentUrl,
-    required this.contentsUrl,
-    required this.compareUrl,
-    required this.mergesUrl,
-    required this.archiveUrl,
-    required this.downloadsUrl,
-    required this.issuesUrl,
-    required this.pullsUrl,
-    required this.milestonesUrl,
-    required this.notificationsUrl,
-    required this.labelsUrl,
-    required this.releasesUrl,
-    required this.deploymentsUrl,
-    required this.createdAt,
-    required this.updatedAt,
-    required this.pushedAt,
-    required this.gitUrl,
-    required this.sshUrl,
-    required this.cloneUrl,
-    required this.svnUrl,
-    required this.homepage,
-    required this.size,
-    required this.stargazersCount,
-    required this.watchersCount,
-    required this.language,
-    required this.hasIssues,
-    required this.hasProjects,
-    required this.hasDownloads,
-    required this.hasWiki,
-    required this.hasPages,
-    required this.hasDiscussions,
-    required this.forksCount,
-    required this.mirrorUrl,
-    required this.archived,
-    required this.disabled,
-    required this.openIssuesCount,
-    required this.license,
-    required this.allowForking,
-    required this.isTemplate,
-    required this.webCommitSignoffRequired,
-    required this.topics,
-    required this.visibility,
-    required this.forks,
-    required this.openIssues,
-    required this.watchers,
-    required this.defaultBranch,
-    required this.score,
+    this.id,
+    this.nodeId,
+    this.name,
+    this.fullName,
+    this.private,
+    this.owner,
+    this.htmlUrl,
+    this.description,
+    this.fork,
+    this.url,
+    this.forksUrl,
+    this.keysUrl,
+    this.collaboratorsUrl,
+    this.teamsUrl,
+    this.hooksUrl,
+    this.issueEventsUrl,
+    this.eventsUrl,
+    this.assigneesUrl,
+    this.branchesUrl,
+    this.tagsUrl,
+    this.blobsUrl,
+    this.gitTagsUrl,
+    this.gitRefsUrl,
+    this.treesUrl,
+    this.statusesUrl,
+    this.languagesUrl,
+    this.stargazersUrl,
+    this.contributorsUrl,
+    this.subscribersUrl,
+    this.subscriptionUrl,
+    this.commitsUrl,
+    this.gitCommitsUrl,
+    this.commentsUrl,
+    this.issueCommentUrl,
+    this.contentsUrl,
+    this.compareUrl,
+    this.mergesUrl,
+    this.archiveUrl,
+    this.downloadsUrl,
+    this.issuesUrl,
+    this.pullsUrl,
+    this.milestonesUrl,
+    this.notificationsUrl,
+    this.labelsUrl,
+    this.releasesUrl,
+    this.deploymentsUrl,
+    this.createdAt,
+    this.updatedAt,
+    this.pushedAt,
+    this.gitUrl,
+    this.sshUrl,
+    this.cloneUrl,
+    this.svnUrl,
+    this.homepage,
+    this.size,
+    this.stargazersCount,
+    this.watchersCount,
+    this.language,
+    this.hasIssues,
+    this.hasProjects,
+    this.hasDownloads,
+    this.hasWiki,
+    this.hasPages,
+    this.hasDiscussions,
+    this.forksCount,
+    this.mirrorUrl,
+    this.archived,
+    this.disabled,
+    this.openIssuesCount,
+    this.license,
+    this.allowForking,
+    this.isTemplate,
+    this.webCommitSignoffRequired,
+    this.topics,
+    this.visibility,
+    this.forks,
+    this.openIssues,
+    this.watchers,
+    this.defaultBranch,
+    this.score,
   });
 
   factory GitRepository.fromJson(Map<String, dynamic> json) => GitRepository(
@@ -182,7 +182,7 @@ class GitRepository {
         name: json["name"],
         fullName: json["full_name"],
         private: json["private"],
-        owner: RepoOwner.fromJson(json["owner"]),
+        owner: json["owner"] == null ? null : Owner.fromJson(json["owner"]),
         htmlUrl: json["html_url"],
         description: json["description"],
         fork: json["fork"],
@@ -223,9 +223,15 @@ class GitRepository {
         labelsUrl: json["labels_url"],
         releasesUrl: json["releases_url"],
         deploymentsUrl: json["deployments_url"],
-        createdAt: DateTime.parse(json["created_at"]),
-        updatedAt: DateTime.parse(json["updated_at"]),
-        pushedAt: DateTime.parse(json["pushed_at"]),
+        createdAt: json["created_at"] == null
+            ? null
+            : DateTime.parse(json["created_at"]),
+        updatedAt: json["updated_at"] == null
+            ? null
+            : DateTime.parse(json["updated_at"]),
+        pushedAt: json["pushed_at"] == null
+            ? null
+            : DateTime.parse(json["pushed_at"]),
         gitUrl: json["git_url"],
         sshUrl: json["ssh_url"],
         cloneUrl: json["clone_url"],
@@ -246,16 +252,19 @@ class GitRepository {
         archived: json["archived"],
         disabled: json["disabled"],
         openIssuesCount: json["open_issues_count"],
-        license: RepoLicense.fromJson(json["license"]),
+        license:
+            json["license"] == null ? null : License.fromJson(json["license"]),
         allowForking: json["allow_forking"],
         isTemplate: json["is_template"],
         webCommitSignoffRequired: json["web_commit_signoff_required"],
-        topics: List<String>.from(json["topics"].map((x) => x)),
-        visibility: json["visibility"],
+        topics: json["topics"] == null
+            ? []
+            : List<String>.from(json["topics"]!.map((x) => x)),
+        visibility: visibilityValues.map[json["visibility"]]!,
         forks: json["forks"],
         openIssues: json["open_issues"],
         watchers: json["watchers"],
-        defaultBranch: json["default_branch"],
+        defaultBranch: defaultBranchValues.map[json["default_branch"]]!,
         score: json["score"],
       );
 
@@ -265,7 +274,7 @@ class GitRepository {
         "name": name,
         "full_name": fullName,
         "private": private,
-        "owner": owner.toJson(),
+        "owner": owner?.toJson(),
         "html_url": htmlUrl,
         "description": description,
         "fork": fork,
@@ -306,9 +315,9 @@ class GitRepository {
         "labels_url": labelsUrl,
         "releases_url": releasesUrl,
         "deployments_url": deploymentsUrl,
-        "created_at": createdAt.toIso8601String(),
-        "updated_at": updatedAt.toIso8601String(),
-        "pushed_at": pushedAt.toIso8601String(),
+        "created_at": createdAt?.toIso8601String(),
+        "updated_at": updatedAt?.toIso8601String(),
+        "pushed_at": pushedAt?.toIso8601String(),
         "git_url": gitUrl,
         "ssh_url": sshUrl,
         "clone_url": cloneUrl,
@@ -329,16 +338,159 @@ class GitRepository {
         "archived": archived,
         "disabled": disabled,
         "open_issues_count": openIssuesCount,
-        "license": license.toJson(),
+        "license": license?.toJson(),
         "allow_forking": allowForking,
         "is_template": isTemplate,
         "web_commit_signoff_required": webCommitSignoffRequired,
-        "topics": List<dynamic>.from(topics.map((x) => x)),
-        "visibility": visibility,
+        "topics":
+            topics == null ? [] : List<dynamic>.from(topics!.map((x) => x)),
+        "visibility": visibilityValues.reverse[visibility],
         "forks": forks,
         "open_issues": openIssues,
         "watchers": watchers,
-        "default_branch": defaultBranch,
+        "default_branch": defaultBranchValues.reverse[defaultBranch],
         "score": score,
       };
+}
+
+enum DefaultBranch { MAIN, MASTER }
+
+final defaultBranchValues =
+    EnumValues({"main": DefaultBranch.MAIN, "master": DefaultBranch.MASTER});
+
+class License {
+  final String? key;
+  final String? name;
+  final String? spdxId;
+  final String? url;
+  final String? nodeId;
+
+  License({
+    this.key,
+    this.name,
+    this.spdxId,
+    this.url,
+    this.nodeId,
+  });
+
+  factory License.fromJson(Map<String, dynamic> json) => License(
+        key: json["key"],
+        name: json["name"],
+        spdxId: json["spdx_id"],
+        url: json["url"],
+        nodeId: json["node_id"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "key": key,
+        "name": name,
+        "spdx_id": spdxId,
+        "url": url,
+        "node_id": nodeId,
+      };
+}
+
+class Owner {
+  final String? login;
+  final int? id;
+  final String? nodeId;
+  final String? avatarUrl;
+  final String? gravatarId;
+  final String? url;
+  final String? htmlUrl;
+  final String? followersUrl;
+  final String? followingUrl;
+  final String? gistsUrl;
+  final String? starredUrl;
+  final String? subscriptionsUrl;
+  final String? organizationsUrl;
+  final String? reposUrl;
+  final String? eventsUrl;
+  final String? receivedEventsUrl;
+  final Type? type;
+  final bool? siteAdmin;
+
+  Owner({
+    this.login,
+    this.id,
+    this.nodeId,
+    this.avatarUrl,
+    this.gravatarId,
+    this.url,
+    this.htmlUrl,
+    this.followersUrl,
+    this.followingUrl,
+    this.gistsUrl,
+    this.starredUrl,
+    this.subscriptionsUrl,
+    this.organizationsUrl,
+    this.reposUrl,
+    this.eventsUrl,
+    this.receivedEventsUrl,
+    this.type,
+    this.siteAdmin,
+  });
+
+  factory Owner.fromJson(Map<String, dynamic> json) => Owner(
+        login: json["login"],
+        id: json["id"],
+        nodeId: json["node_id"],
+        avatarUrl: json["avatar_url"],
+        gravatarId: json["gravatar_id"],
+        url: json["url"],
+        htmlUrl: json["html_url"],
+        followersUrl: json["followers_url"],
+        followingUrl: json["following_url"],
+        gistsUrl: json["gists_url"],
+        starredUrl: json["starred_url"],
+        subscriptionsUrl: json["subscriptions_url"],
+        organizationsUrl: json["organizations_url"],
+        reposUrl: json["repos_url"],
+        eventsUrl: json["events_url"],
+        receivedEventsUrl: json["received_events_url"],
+        type: typeValues.map[json["type"]]!,
+        siteAdmin: json["site_admin"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "login": login,
+        "id": id,
+        "node_id": nodeId,
+        "avatar_url": avatarUrl,
+        "gravatar_id": gravatarId,
+        "url": url,
+        "html_url": htmlUrl,
+        "followers_url": followersUrl,
+        "following_url": followingUrl,
+        "gists_url": gistsUrl,
+        "starred_url": starredUrl,
+        "subscriptions_url": subscriptionsUrl,
+        "organizations_url": organizationsUrl,
+        "repos_url": reposUrl,
+        "events_url": eventsUrl,
+        "received_events_url": receivedEventsUrl,
+        "type": typeValues.reverse[type],
+        "site_admin": siteAdmin,
+      };
+}
+
+enum Type { ORGANIZATION, USER }
+
+final typeValues =
+    EnumValues({"Organization": Type.ORGANIZATION, "User": Type.USER});
+
+enum Visibility { PUBLIC }
+
+final visibilityValues = EnumValues({"public": Visibility.PUBLIC});
+
+class EnumValues<T> {
+  Map<String, T> map;
+  late Map<T, String> reverseMap;
+
+  EnumValues(this.map);
+
+  Map<T, String> get reverse {
+    reverseMap = map.map((k, v) => MapEntry(v, k));
+    return reverseMap;
+  }
 }
