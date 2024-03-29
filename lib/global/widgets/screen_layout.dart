@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:starflare/global/controllers/shared_preference_controller.dart';
+
+import 'theme_mode_toggle_button.dart';
 
 class ScreenLayout extends StatelessWidget {
   final Widget screen;
@@ -16,39 +16,11 @@ class ScreenLayout extends StatelessWidget {
             Container(
               height: 50.0,
               color: Colors.blueAccent,
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: GetX<SharedPrefController>(
-                      tag: 'sharedPrefController',
-                      builder: (sharedPref) {
-                        return ToggleButtons(
-                          selectedColor: Colors.greenAccent,
-                          borderWidth: 3.0,
-                          borderRadius: BorderRadius.circular(10),
-                          isSelected: sharedPref.getIsDark
-                              ? [true, false]
-                              : [false, true],
-                          children: const [
-                            Icon(
-                              Icons.dark_mode,
-                              size: 15.0,
-                            ),
-                            Icon(
-                              Icons.light_mode,
-                              size: 15.0,
-                            ),
-                          ],
-                          onPressed: (index) => sharedPref.changeTheme(
-                            index == 0,
-                          ),
-                        );
-                      },
-                    ),
-                  ),
+                  ThemeModeToggleButton(),
                 ],
               ),
             ),
