@@ -4,12 +4,25 @@
 
 import 'dart:convert';
 
+import 'package:starflare/data/models/git_repo/repo_license.dart';
+import 'package:starflare/data/models/git_repo/repo_owner.dart';
+
+import '../../enums/git_repo/default_branch.dart';
+import '../../enums/git_repo/enum_values.dart';
+import '../../enums/git_repo/visibility_type.dart';
+
 List<GitRepository> gitRepositoryFromJson(String str) =>
     List<GitRepository>.from(
-        json.decode(str).map((x) => GitRepository.fromJson(x)));
+      json.decode(str).map(
+            (x) => GitRepository.fromJson(x),
+          ),
+    );
 
-String gitRepositoryToJson(List<GitRepository> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String gitRepositoryToJson(List<GitRepository> data) => json.encode(
+      List<dynamic>.from(
+        data.map((x) => x.toJson()),
+      ),
+    );
 
 class GitRepository {
   final int? id;
@@ -17,7 +30,7 @@ class GitRepository {
   final String? name;
   final String? fullName;
   final bool? private;
-  final Owner? owner;
+  final RepoOwner? owner;
   final String? htmlUrl;
   final String? description;
   final bool? fork;
@@ -81,7 +94,7 @@ class GitRepository {
   final bool? archived;
   final bool? disabled;
   final int? openIssuesCount;
-  final License? license;
+  final RepoLicense? license;
   final bool? allowForking;
   final bool? isTemplate;
   final bool? webCommitSignoffRequired;
@@ -182,7 +195,11 @@ class GitRepository {
         name: json["name"],
         fullName: json["full_name"],
         private: json["private"],
-        owner: json["owner"] == null ? null : Owner.fromJson(json["owner"]),
+        owner: json["owner"] == null
+            ? null
+            : RepoOwner.fromJson(
+                json["owner"],
+              ),
         htmlUrl: json["html_url"],
         description: json["description"],
         fork: json["fork"],
@@ -252,14 +269,19 @@ class GitRepository {
         archived: json["archived"],
         disabled: json["disabled"],
         openIssuesCount: json["open_issues_count"],
-        license:
-            json["license"] == null ? null : License.fromJson(json["license"]),
+        license: json["license"] == null
+            ? null
+            : RepoLicense.fromJson(
+                json["license"],
+              ),
         allowForking: json["allow_forking"],
         isTemplate: json["is_template"],
         webCommitSignoffRequired: json["web_commit_signoff_required"],
         topics: json["topics"] == null
             ? []
-            : List<String>.from(json["topics"]!.map((x) => x)),
+            : List<String>.from(
+                json["topics"]!.map((x) => x),
+              ),
         visibility: visibilityValues.map[json["visibility"]]!,
         forks: json["forks"],
         openIssues: json["open_issues"],
@@ -342,8 +364,13 @@ class GitRepository {
         "allow_forking": allowForking,
         "is_template": isTemplate,
         "web_commit_signoff_required": webCommitSignoffRequired,
-        "topics":
-            topics == null ? [] : List<dynamic>.from(topics!.map((x) => x)),
+        "topics": topics == null
+            ? []
+            : List<dynamic>.from(
+                topics!.map(
+                  (x) => x,
+                ),
+              ),
         "visibility": visibilityValues.reverse[visibility],
         "forks": forks,
         "open_issues": openIssues,
@@ -351,146 +378,4 @@ class GitRepository {
         "default_branch": defaultBranchValues.reverse[defaultBranch],
         "score": score,
       };
-}
-
-enum DefaultBranch { MAIN, MASTER }
-
-final defaultBranchValues =
-    EnumValues({"main": DefaultBranch.MAIN, "master": DefaultBranch.MASTER});
-
-class License {
-  final String? key;
-  final String? name;
-  final String? spdxId;
-  final String? url;
-  final String? nodeId;
-
-  License({
-    this.key,
-    this.name,
-    this.spdxId,
-    this.url,
-    this.nodeId,
-  });
-
-  factory License.fromJson(Map<String, dynamic> json) => License(
-        key: json["key"],
-        name: json["name"],
-        spdxId: json["spdx_id"],
-        url: json["url"],
-        nodeId: json["node_id"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "key": key,
-        "name": name,
-        "spdx_id": spdxId,
-        "url": url,
-        "node_id": nodeId,
-      };
-}
-
-class Owner {
-  final String? login;
-  final int? id;
-  final String? nodeId;
-  final String? avatarUrl;
-  final String? gravatarId;
-  final String? url;
-  final String? htmlUrl;
-  final String? followersUrl;
-  final String? followingUrl;
-  final String? gistsUrl;
-  final String? starredUrl;
-  final String? subscriptionsUrl;
-  final String? organizationsUrl;
-  final String? reposUrl;
-  final String? eventsUrl;
-  final String? receivedEventsUrl;
-  final Type? type;
-  final bool? siteAdmin;
-
-  Owner({
-    this.login,
-    this.id,
-    this.nodeId,
-    this.avatarUrl,
-    this.gravatarId,
-    this.url,
-    this.htmlUrl,
-    this.followersUrl,
-    this.followingUrl,
-    this.gistsUrl,
-    this.starredUrl,
-    this.subscriptionsUrl,
-    this.organizationsUrl,
-    this.reposUrl,
-    this.eventsUrl,
-    this.receivedEventsUrl,
-    this.type,
-    this.siteAdmin,
-  });
-
-  factory Owner.fromJson(Map<String, dynamic> json) => Owner(
-        login: json["login"],
-        id: json["id"],
-        nodeId: json["node_id"],
-        avatarUrl: json["avatar_url"],
-        gravatarId: json["gravatar_id"],
-        url: json["url"],
-        htmlUrl: json["html_url"],
-        followersUrl: json["followers_url"],
-        followingUrl: json["following_url"],
-        gistsUrl: json["gists_url"],
-        starredUrl: json["starred_url"],
-        subscriptionsUrl: json["subscriptions_url"],
-        organizationsUrl: json["organizations_url"],
-        reposUrl: json["repos_url"],
-        eventsUrl: json["events_url"],
-        receivedEventsUrl: json["received_events_url"],
-        type: typeValues.map[json["type"]]!,
-        siteAdmin: json["site_admin"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "login": login,
-        "id": id,
-        "node_id": nodeId,
-        "avatar_url": avatarUrl,
-        "gravatar_id": gravatarId,
-        "url": url,
-        "html_url": htmlUrl,
-        "followers_url": followersUrl,
-        "following_url": followingUrl,
-        "gists_url": gistsUrl,
-        "starred_url": starredUrl,
-        "subscriptions_url": subscriptionsUrl,
-        "organizations_url": organizationsUrl,
-        "repos_url": reposUrl,
-        "events_url": eventsUrl,
-        "received_events_url": receivedEventsUrl,
-        "type": typeValues.reverse[type],
-        "site_admin": siteAdmin,
-      };
-}
-
-enum Type { ORGANIZATION, USER }
-
-final typeValues =
-    EnumValues({"Organization": Type.ORGANIZATION, "User": Type.USER});
-
-enum Visibility { PUBLIC }
-
-final visibilityValues = EnumValues({"public": Visibility.PUBLIC});
-
-class EnumValues<T> {
-  Map<String, T> map;
-  late Map<T, String> reverseMap;
-
-  EnumValues(this.map);
-
-  Map<T, String> get reverse {
-    reverseMap = map.map((k, v) => MapEntry(v, k));
-    return reverseMap;
-  }
 }

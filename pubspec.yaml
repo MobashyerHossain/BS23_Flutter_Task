@@ -35,6 +35,9 @@ dependencies:
   dio: ^5.4.2+1
   flutter_screenutil: ^5.9.0
   logger: ^2.2.0
+  string_capitalize: ^0.0.10
+  loading_animation_widget: ^1.2.1
+  intl: ^0.19.0
 
 
   # The following adds the Cupertino Icons font to your application.

@@ -1,52 +1,45 @@
-import 'dart:convert';
-
-RepoOwner repositoryFromJson(String str) => RepoOwner.fromJson(
-      json.decode(str),
-    );
-
-String repositoryToJson(RepoOwner data) => json.encode(
-      data.toJson(),
-    );
+import '../../enums/git_repo/enum_values.dart';
+import '../../enums/git_repo/owner_type.dart';
 
 class RepoOwner {
-  final String login;
-  final int id;
-  final String nodeId;
-  final String avatarUrl;
-  final String gravatarId;
-  final String url;
-  final String htmlUrl;
-  final String followersUrl;
-  final String followingUrl;
-  final String gistsUrl;
-  final String starredUrl;
-  final String subscriptionsUrl;
-  final String organizationsUrl;
-  final String reposUrl;
-  final String eventsUrl;
-  final String receivedEventsUrl;
-  final String type;
-  final bool siteAdmin;
+  final String? login;
+  final int? id;
+  final String? nodeId;
+  final String? avatarUrl;
+  final String? gravatarId;
+  final String? url;
+  final String? htmlUrl;
+  final String? followersUrl;
+  final String? followingUrl;
+  final String? gistsUrl;
+  final String? starredUrl;
+  final String? subscriptionsUrl;
+  final String? organizationsUrl;
+  final String? reposUrl;
+  final String? eventsUrl;
+  final String? receivedEventsUrl;
+  final OwnerType? type;
+  final bool? siteAdmin;
 
   RepoOwner({
-    required this.login,
-    required this.id,
-    required this.nodeId,
-    required this.avatarUrl,
-    required this.gravatarId,
-    required this.url,
-    required this.htmlUrl,
-    required this.followersUrl,
-    required this.followingUrl,
-    required this.gistsUrl,
-    required this.starredUrl,
-    required this.subscriptionsUrl,
-    required this.organizationsUrl,
-    required this.reposUrl,
-    required this.eventsUrl,
-    required this.receivedEventsUrl,
-    required this.type,
-    required this.siteAdmin,
+    this.login,
+    this.id,
+    this.nodeId,
+    this.avatarUrl,
+    this.gravatarId,
+    this.url,
+    this.htmlUrl,
+    this.followersUrl,
+    this.followingUrl,
+    this.gistsUrl,
+    this.starredUrl,
+    this.subscriptionsUrl,
+    this.organizationsUrl,
+    this.reposUrl,
+    this.eventsUrl,
+    this.receivedEventsUrl,
+    this.type,
+    this.siteAdmin,
   });
 
   factory RepoOwner.fromJson(Map<String, dynamic> json) => RepoOwner(
@@ -66,7 +59,7 @@ class RepoOwner {
         reposUrl: json["repos_url"],
         eventsUrl: json["events_url"],
         receivedEventsUrl: json["received_events_url"],
-        type: json["type"],
+        type: typeValues.map[json["type"]]!,
         siteAdmin: json["site_admin"],
       );
 
@@ -87,7 +80,7 @@ class RepoOwner {
         "repos_url": reposUrl,
         "events_url": eventsUrl,
         "received_events_url": receivedEventsUrl,
-        "type": type,
+        "type": typeValues.reverse[type],
         "site_admin": siteAdmin,
       };
 }

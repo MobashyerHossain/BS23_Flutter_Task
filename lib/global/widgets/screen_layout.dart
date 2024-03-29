@@ -25,7 +25,12 @@ class ScreenLayout extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: screen,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 10.0,
+                ),
+                child: screen,
+              ),
             ),
           ],
         ),
