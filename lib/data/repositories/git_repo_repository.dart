@@ -8,11 +8,19 @@ class GitRepoRepository extends GetxController {
   GitRepoRepository(this.gitRepoApi);
 
   Future<dynamic> getRepos({
+    String query = "flutter",
     int page = 0,
+    int perPage = 10,
+    String sortBy = "stars",
+    String sortOrder = "desc",
   }) async {
     try {
       final response = await gitRepoApi.getRepos(
+        query: query,
         page: page,
+        perPage: perPage,
+        sortBy: sortBy,
+        sortOrder: sortOrder,
       );
       return response;
     } on Exception catch (e) {

@@ -6,10 +6,14 @@ class GitRepoApi {
 
   // Get all Repositories
   Future<Response> getRepos({
+    String query = "flutter",
     int page = 0,
+    int perPage = 10,
+    String sortBy = "stars",
+    String sortOrder = "desc",
   }) {
     return dio.get(
-      '${ApiConstants.gitRepoBaseApi}q=flutter&page=$page&per_page=10&sort=stars&order=desc',
+      '${ApiConstants.gitRepoBaseApi}q=$query&page=$page&per_page=$perPage&sort=$sortBy&direction=$sortOrder',
     );
   }
 }

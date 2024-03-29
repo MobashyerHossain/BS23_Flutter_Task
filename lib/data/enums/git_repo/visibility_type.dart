@@ -2,7 +2,19 @@ import 'enum_values.dart';
 
 enum Visibility {
   PUBLIC,
-  PRIVATE,
+  PRIVATE;
+
+  @override
+  String toString() {
+    switch (this) {
+      case Visibility.PUBLIC:
+        return 'Public';
+      case Visibility.PRIVATE:
+        return 'Private';
+      default:
+        return ''; // Handle any other cases if needed
+    }
+  }
 }
 
 final visibilityValues = EnumValues({

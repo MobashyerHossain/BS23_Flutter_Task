@@ -3,21 +3,20 @@ import 'package:string_capitalize/string_capitalize.dart';
 import 'package:intl/intl.dart';
 import '../../enums/git_repo/visibility_type.dart';
 
-List<GitRepositorySummary> gitRepositorySummaryFromJson(String str) =>
-    List<GitRepositorySummary>.from(
+List<GitRepoSummary> gitRepositorySummaryFromJson(String str) =>
+    List<GitRepoSummary>.from(
       json.decode(str).map(
-            (x) => GitRepositorySummary.fromJson(x),
+            (x) => GitRepoSummary.fromJson(x),
           ),
     );
 
-String gitRepositorySummaryToJson(List<GitRepositorySummary> data) =>
-    json.encode(
+String gitRepositorySummaryToJson(List<GitRepoSummary> data) => json.encode(
       List<dynamic>.from(
         data.map((x) => x.toJson()),
       ),
     );
 
-class GitRepositorySummary {
+class GitRepoSummary {
   final int? id;
   final String? nodeId;
   final String? name;
@@ -36,7 +35,7 @@ class GitRepositorySummary {
   final int? stargazersCount;
   final double? score;
 
-  GitRepositorySummary({
+  GitRepoSummary({
     this.id,
     this.nodeId,
     this.name,
@@ -56,8 +55,7 @@ class GitRepositorySummary {
     this.score,
   });
 
-  factory GitRepositorySummary.fromJson(Map<String, dynamic> json) =>
-      GitRepositorySummary(
+  factory GitRepoSummary.fromJson(Map<String, dynamic> json) => GitRepoSummary(
         id: json["id"],
         nodeId: json["node_id"],
         name: json["name"],
@@ -108,11 +106,12 @@ class GitRepositorySummary {
   }
 
   String getDescription() {
-    return description != null ? description!.trim().capitalize() : "...";
+    String desc = description != null ? description! : "...";
+    return desc.length > 120 ? '${desc.substring(0, 110)}. Read More...' : desc;
   }
 
   String getVisibility() {
-    return visibility != null ? visibility.toString().split('.').last : "...";
+    return visibility != null ? visibility.toString() : "...";
   }
 
   String getLanguage() {

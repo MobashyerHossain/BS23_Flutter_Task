@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:starflare/global/controllers/shared_preference_controller.dart';
 
 import 'theme_mode_toggle_button.dart';
 
@@ -15,21 +17,74 @@ class ScreenLayout extends StatelessWidget {
           children: [
             Container(
               height: 50.0,
-              color: Colors.blueAccent,
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(12.0),
+                  bottomRight: Radius.circular(12.0),
+                ),
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.greenAccent,
+                    Colors.blueAccent,
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+              ),
+              child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  ThemeModeToggleButton(),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: GetX<SharedPrefController>(
+                      tag: "sharedPrefController",
+                      builder: (sharedPrefController) {
+                        return Image.asset(
+                          'assets/logos/github2.png',
+                          color: sharedPrefController.getIsDark
+                              ? Colors.white
+                              : Colors.black,
+                        );
+                      },
+                    ),
+                  ),
+                  const Text(
+                    "Star Flare",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const ThemeModeToggleButton(),
                 ],
               ),
             ),
             Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 10.0,
-                ),
-                child: screen,
+              child: GetX<SharedPrefController>(
+                tag: "sharedPrefController",
+                builder: (sharedPrefController) {
+                  return Container(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 10.0,
+                    ),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: sharedPrefController.getIsDark
+                            ? [
+                                Colors.black,
+                                Colors.black87,
+                              ]
+                            : [
+                                Colors.white,
+                                Colors.white70,
+                              ],
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                      ),
+                    ),
+                    child: screen,
+                  );
+                },
               ),
             ),
           ],

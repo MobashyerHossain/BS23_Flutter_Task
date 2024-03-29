@@ -29,9 +29,7 @@ class CircularChip extends StatelessWidget {
           ),
           child: Text(
             text,
-            style: const TextStyle(
-              fontSize: 8.0,
-            ),
+            style: const TextStyle(fontSize: 8.0, fontWeight: FontWeight.bold),
           ),
         ),
       ),

@@ -10,7 +10,7 @@ class GitRepoController extends GetxController {
   final GitRepoRepository gitRepoRepository;
 
   // observables
-  final gitRepoSummaries = List<GitRepositorySummary>.empty(growable: true).obs;
+  final gitRepoSummaries = List<GitRepoSummary>.empty(growable: true).obs;
 
   final RxInt gitRepoTotalCount = 0.obs;
   final RxBool isLoadingGitRepoSummaries = false.obs;
@@ -22,7 +22,7 @@ class GitRepoController extends GetxController {
     super.onInit();
 
     await getRepos(
-      page: 0,
+      page: 1,
     );
   }
 
@@ -33,16 +33,25 @@ class GitRepoController extends GetxController {
   void setIsLoadingGitRepoSummaries(value) =>
       isLoadingGitRepoSummaries.value = value;
 
-  List<GitRepositorySummary> get getGitRepoSummaries => gitRepoSummaries;
+  List<GitRepoSummary> get getGitRepoSummaries => gitRepoSummaries;
   void setGitRepoSummaries(value) => gitRepoSummaries.value = value;
 
   Future<void> getRepos({
+    String query = "flutter",
     int page = 0,
+    int perPage = 10,
+    String sortBy = "stars",
+    String sortOrder = "desc",
   }) async {
     setIsLoadingGitRepoSummaries(true);
+    print(page);
     gitRepoRepository
         .getRepos(
+      query: query,
       page: page,
+      perPage: perPage,
+      sortBy: sortBy,
+      sortOrder: sortOrder,
     )
         .then(
       (response) {

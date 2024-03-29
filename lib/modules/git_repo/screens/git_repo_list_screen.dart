@@ -70,7 +70,7 @@ class _GitRepoListScreenState extends State<GitRepoListScreen> {
                         ),
                       );
                     } else {
-                      final GitRepositorySummary gitRepoSummary =
+                      final GitRepoSummary gitRepoSummary =
                           gitRepoController.getGitRepoSummaries[index];
                       return GitRepoListItem(
                         gitRepoSummary: gitRepoSummary,

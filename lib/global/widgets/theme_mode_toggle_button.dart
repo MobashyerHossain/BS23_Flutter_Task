@@ -18,7 +18,7 @@ class ThemeModeToggleButton extends StatelessWidget {
           return ToggleButtons(
             selectedColor: Colors.greenAccent,
             borderWidth: 3.0,
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(20),
             isSelected: sharedPref.getIsDark ? [true, false] : [false, true],
             children: const [
               Icon(
