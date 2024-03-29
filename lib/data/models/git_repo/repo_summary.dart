@@ -122,12 +122,34 @@ class GitRepoSummary {
     return stargazersCount != null ? stargazersCount!.toString() : "0";
   }
 
+  int getStarCount() {
+    return stargazersCount != null ? stargazersCount! : 0;
+  }
+
   String getUpdatedAtV1() {
     if (updatedAt == null) {
       return 'Unknown';
     } else {
       final formattedDate = DateFormat('MMM dd, yyyy').format(updatedAt!);
       return 'Updated on $formattedDate';
+    }
+  }
+
+  String getUpdatedAtV2() {
+    if (updatedAt == null) {
+      return 'Unknown';
+    } else {
+      final formattedDate = DateFormat('yyyy-mm-dd').format(updatedAt!);
+      return formattedDate;
+    }
+  }
+
+  String getCreatedAtV2() {
+    if (createdAt == null) {
+      return 'Unknown';
+    } else {
+      final formattedDate = DateFormat('yyyy-mm-dd').format(createdAt!);
+      return formattedDate;
     }
   }
 }

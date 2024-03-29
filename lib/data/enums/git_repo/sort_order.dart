@@ -10,9 +10,14 @@ enum SortOrder {
       case SortOrder.ASC:
         return 'asc';
       case SortOrder.DESC:
-        return 'dsc';
+        return 'desc';
       default:
         return ''; // Handle any other cases if needed
     }
   }
 }
+
+final sortOrderValues = EnumValues({
+  "asc": SortOrder.ASC,
+  "desc": SortOrder.DESC,
+});

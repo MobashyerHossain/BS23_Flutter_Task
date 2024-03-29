@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:starflare/global/controllers/shared_preference_controller.dart';
 
-import 'theme_mode_toggle_button.dart';
+import 'side_drawer.dart';
+import 'top_nav_bar.dart';
 
 class ScreenLayout extends StatelessWidget {
   final Widget screen;
@@ -11,54 +12,12 @@ class ScreenLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      endDrawer: const SideDrawer(),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              height: 50.0,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(12.0),
-                  bottomRight: Radius.circular(12.0),
-                ),
-                gradient: LinearGradient(
-                  colors: [
-                    Colors.greenAccent,
-                    Colors.blueAccent,
-                  ],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                ),
-              ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: GetX<SharedPrefController>(
-                      tag: "sharedPrefController",
-                      builder: (sharedPrefController) {
-                        return Image.asset(
-                          'assets/logos/github2.png',
-                          color: sharedPrefController.getIsDark
-                              ? Colors.white
-                              : Colors.black,
-                        );
-                      },
-                    ),
-                  ),
-                  const Text(
-                    "Star Flare",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const ThemeModeToggleButton(),
-                ],
-              ),
-            ),
+            const TopNavBar(),
             Expanded(
               child: GetX<SharedPrefController>(
                 tag: "sharedPrefController",
@@ -90,11 +49,6 @@ class ScreenLayout extends StatelessWidget {
           ],
         ),
       ),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   items: [
-      //     BottomNavigationBarItem(icon: icon)
-      //   ],
-      // ),
     );
   }
 }

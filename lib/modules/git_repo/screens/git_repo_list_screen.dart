@@ -4,6 +4,7 @@ import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:starflare/data/models/git_repo/repo_summary.dart';
 import 'package:starflare/global/widgets/screen_layout.dart';
 
+import '../../../global/controllers/shared_preference_controller.dart';
 import '../business_logic/git_repo_controller.dart';
 import '../local_widgets/git_repo_list_item.dart';
 
@@ -18,6 +19,9 @@ class _GitRepoListScreenState extends State<GitRepoListScreen> {
   final ScrollController gitRepoListScreenScroll = ScrollController(
     debugLabel: 'gitRepoListScreenScroll',
   );
+
+  final SharedPrefController sharedPrefController =
+      Get.find<SharedPrefController>(tag: 'sharedPrefController');
 
   final GitRepoController gitRepoController =
       Get.find<GitRepoController>(tag: 'gitRepoController');
@@ -40,6 +44,8 @@ class _GitRepoListScreenState extends State<GitRepoListScreen> {
         !gitRepoListScreenScroll.position.outOfRange) {
       gitRepoController.getRepos(
         page: 1,
+        sortBy: sharedPrefController.getSortBy,
+        sortOrder: sharedPrefController.getSortOrder,
       );
     }
   }

@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
+import 'package:starflare/data/enums/git_repo/sort_by.dart';
+import 'package:starflare/data/enums/git_repo/sort_order.dart';
 import 'package:starflare/data/repositories/git_repo_repository.dart';
 import 'package:logger/logger.dart';
 
@@ -20,10 +22,6 @@ class GitRepoController extends GetxController {
   @override
   Future<void> onInit() async {
     super.onInit();
-
-    await getRepos(
-      page: 1,
-    );
   }
 
   String get getGitRepoTotalCount => gitRepoTotalCount.value.toString();
@@ -38,13 +36,12 @@ class GitRepoController extends GetxController {
 
   Future<void> getRepos({
     String query = "flutter",
-    int page = 0,
+    int page = 1,
     int perPage = 10,
     String sortBy = "stars",
     String sortOrder = "desc",
   }) async {
     setIsLoadingGitRepoSummaries(true);
-    print(page);
     gitRepoRepository
         .getRepos(
       query: query,
@@ -75,5 +72,59 @@ class GitRepoController extends GetxController {
         Logger().e(stackTrace.toString());
       },
     );
+  }
+
+  void sortRepos(
+    String sortBy,
+    String sortOrder,
+  ) {
+    switch (sortByValues.map[sortBy]) {
+      case SortBy.STARS:
+        if (sortOrder == SortOrder.ASC.toString()) {
+          getGitRepoSummaries.sort(
+            (a, b) => a.getStarCount().compareTo(
+                  b.getStarCount(),
+                ),
+          );
+        } else {
+          getGitRepoSummaries.sort(
+            (a, b) => b.getStarCount().compareTo(
+                  a.getStarCount(),
+                ),
+          );
+        }
+        break;
+      case SortBy.UPDATED:
+        if (sortOrder == SortOrder.ASC.toString()) {
+          getGitRepoSummaries.sort(
+            (a, b) => a.getUpdatedAtV2().compareTo(
+                  b.getUpdatedAtV2(),
+                ),
+          );
+        } else {
+          getGitRepoSummaries.sort(
+            (a, b) => b.getUpdatedAtV2().compareTo(
+                  a.getUpdatedAtV2(),
+                ),
+          );
+        }
+        break;
+      case SortBy.CREATED:
+        if (sortOrder == SortOrder.ASC.toString()) {
+          getGitRepoSummaries.sort(
+            (a, b) => a.getCreatedAtV2().compareTo(
+                  b.getCreatedAtV2(),
+                ),
+          );
+        } else {
+          getGitRepoSummaries.sort(
+            (a, b) => b.getCreatedAtV2().compareTo(
+                  a.getCreatedAtV2(),
+                ),
+          );
+        }
+        break;
+      default:
+    }
   }
 }

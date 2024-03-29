@@ -19,3 +19,9 @@ enum SortBy {
     }
   }
 }
+
+final sortByValues = EnumValues({
+  "stars": SortBy.STARS,
+  "updated": SortBy.UPDATED,
+  "created": SortBy.CREATED,
+});

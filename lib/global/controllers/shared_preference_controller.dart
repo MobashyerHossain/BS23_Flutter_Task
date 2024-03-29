@@ -5,8 +5,13 @@ import 'package:starflare/core/constants/string_constants.dart';
 import 'package:starflare/data/enums/git_repo/sort_by.dart';
 import 'package:starflare/data/enums/git_repo/sort_order.dart';
 
+import '../../modules/git_repo/business_logic/git_repo_controller.dart';
+
 class SharedPrefController extends GetxController {
   final sharedPref = GetStorage(StringConstants.spStorageName);
+
+  final GitRepoController gitRepoController =
+      Get.find<GitRepoController>(tag: 'gitRepoController');
 
   // observables
   final isDark = false.obs;
@@ -46,7 +51,16 @@ class SharedPrefController extends GetxController {
     );
 
     //Read sortOrder
-    setSortOrder(sharedPref.read(StringConstants.spDataSortOrder));
+    setSortOrder(
+      sharedPref.read(StringConstants.spDataSortOrder),
+    );
+
+    //Fetch First Round of Data
+    gitRepoController.getRepos(
+      page: 1,
+      sortBy: getSortBy,
+      sortOrder: getSortOrder,
+    );
   }
 
   bool get getIsDark => isDark.value;
@@ -56,10 +70,34 @@ class SharedPrefController extends GetxController {
   String get getSortBy => sortBy.value;
   void setSortBy(value) {
     sortBy.value = value;
+
+    sharedPref.write(
+      StringConstants.spDataSortBy,
+      value,
+    );
+
+    // Sort repo when button pressed
+    gitRepoController.sortRepos(
+      getSortBy,
+      getSortOrder,
+    );
   }
 
   String get getSortOrder => sortOrder.value;
-  void setSortOrder(value) => sortOrder.value = value;
+  void setSortOrder(value) {
+    sortOrder.value = value;
+
+    sharedPref.write(
+      StringConstants.spDataSortOrder,
+      value,
+    );
+
+    // Sort repo when button pressed
+    gitRepoController.sortRepos(
+      getSortBy,
+      getSortOrder,
+    );
+  }
 
   void changeTheme(bool val) {
     sharedPref.write(

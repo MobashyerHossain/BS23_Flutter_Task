@@ -10,14 +10,17 @@ class ThemeModeToggleButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(5.0),
-      child: GetX<SharedPrefController>(
-        tag: 'sharedPrefController',
-        builder: (sharedPref) {
-          return ToggleButtons(
-            selectedColor: Colors.greenAccent,
-            borderWidth: 3.0,
+    return GetX<SharedPrefController>(
+      tag: 'sharedPrefController',
+      builder: (sharedPref) {
+        return ConstrainedBox(
+          constraints: const BoxConstraints(
+            maxHeight: 30.0,
+          ),
+          child: ToggleButtons(
+            selectedColor: Colors.black,
+            fillColor: Colors.grey,
+            borderWidth: 3,
             borderRadius: BorderRadius.circular(20),
             isSelected: sharedPref.getIsDark ? [true, false] : [false, true],
             children: const [
@@ -33,9 +36,9 @@ class ThemeModeToggleButton extends StatelessWidget {
             onPressed: (index) => sharedPref.changeTheme(
               index == 0,
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }
