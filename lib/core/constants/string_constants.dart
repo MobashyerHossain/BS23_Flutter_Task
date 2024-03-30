@@ -3,4 +3,5 @@ class StringConstants {
   static const spDataDarkModeName = 'darkMode';
   static const spDataSortBy = 'gitRepoSortBy';
   static const spDataSortOrder = 'gitRepoSortOrder';
+  static const spDataCurrentGitRepoPage = 'currentGitRepoPage';
 }

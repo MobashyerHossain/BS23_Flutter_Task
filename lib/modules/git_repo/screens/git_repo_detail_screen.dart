@@ -16,9 +16,7 @@ class _GitRepoDetailScreenState extends State<GitRepoDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return ScreenLayout(
-      screen: Container(
-        child: Text(gitRepoSummary.getFullName()),
-      ),
+      screen: Text(gitRepoSummary.getFullName()),
     );
   }
 }

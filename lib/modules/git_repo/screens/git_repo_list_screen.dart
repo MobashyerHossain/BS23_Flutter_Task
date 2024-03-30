@@ -43,7 +43,7 @@ class _GitRepoListScreenState extends State<GitRepoListScreen> {
             gitRepoListScreenScroll.position.maxScrollExtent &&
         !gitRepoListScreenScroll.position.outOfRange) {
       gitRepoController.getRepos(
-        page: 1,
+        // page: 1,
         sortBy: sharedPrefController.getSortBy,
         sortOrder: sharedPrefController.getSortOrder,
       );
@@ -86,11 +86,10 @@ class _GitRepoListScreenState extends State<GitRepoListScreen> {
                   separatorBuilder: (BuildContext context, int index) {
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                      child: SizedBox(
-                        height: 2.0,
-                        child: ColoredBox(
-                          color: Colors.grey.withOpacity(0.5),
-                        ),
+                      child: Divider(
+                        height: 15.0,
+                        thickness: 2.0,
+                        color: Colors.grey.withOpacity(0.5),
                       ),
                     );
                   },

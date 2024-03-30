@@ -52,6 +52,7 @@ class GitRepoListItem extends StatelessWidget {
             ],
           ),
           subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(

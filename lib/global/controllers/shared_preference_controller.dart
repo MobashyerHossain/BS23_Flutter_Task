@@ -5,18 +5,14 @@ import 'package:starflare/core/constants/string_constants.dart';
 import 'package:starflare/data/enums/git_repo/sort_by.dart';
 import 'package:starflare/data/enums/git_repo/sort_order.dart';
 
-import '../../modules/git_repo/business_logic/git_repo_controller.dart';
-
 class SharedPrefController extends GetxController {
   final sharedPref = GetStorage(StringConstants.spStorageName);
-
-  final GitRepoController gitRepoController =
-      Get.find<GitRepoController>(tag: 'gitRepoController');
 
   // observables
   final isDark = false.obs;
   final sortBy = SortBy.STARS.toString().obs;
   final sortOrder = SortOrder.DESC.toString().obs;
+  final currentGitRepoPage = 1.obs;
 
   @override
   Future<void> onInit() async {
@@ -40,6 +36,12 @@ class SharedPrefController extends GetxController {
       SortOrder.DESC.toString(),
     );
 
+    // initate current repo page sharedpref if not initiated
+    sharedPref.writeIfNull(
+      StringConstants.spDataCurrentGitRepoPage,
+      0,
+    );
+
     //Read darkmode
     setIsDark(
       sharedPref.read(StringConstants.spDataDarkModeName),
@@ -55,50 +57,16 @@ class SharedPrefController extends GetxController {
       sharedPref.read(StringConstants.spDataSortOrder),
     );
 
-    //Fetch First Round of Data
-    gitRepoController.getRepos(
-      page: 1,
-      sortBy: getSortBy,
-      sortOrder: getSortOrder,
+    //Read current git repo page
+    setCurrentGitRepoPage(
+      sharedPref.read(StringConstants.spDataCurrentGitRepoPage),
     );
   }
 
+  // is dark mode shared pref getter setter
   bool get getIsDark => isDark.value;
   void setIsDark(value) => isDark.value = value;
   ThemeMode get getTheme => isDark.value ? ThemeMode.dark : ThemeMode.light;
-
-  String get getSortBy => sortBy.value;
-  void setSortBy(value) {
-    sortBy.value = value;
-
-    sharedPref.write(
-      StringConstants.spDataSortBy,
-      value,
-    );
-
-    // Sort repo when button pressed
-    gitRepoController.sortRepos(
-      getSortBy,
-      getSortOrder,
-    );
-  }
-
-  String get getSortOrder => sortOrder.value;
-  void setSortOrder(value) {
-    sortOrder.value = value;
-
-    sharedPref.write(
-      StringConstants.spDataSortOrder,
-      value,
-    );
-
-    // Sort repo when button pressed
-    gitRepoController.sortRepos(
-      getSortBy,
-      getSortOrder,
-    );
-  }
-
   void changeTheme(bool val) {
     sharedPref.write(
       StringConstants.spDataDarkModeName,
@@ -107,6 +75,39 @@ class SharedPrefController extends GetxController {
 
     setIsDark(
       sharedPref.read(StringConstants.spDataDarkModeName),
+    );
+  }
+
+  // sort by shared pref getter setter
+  String get getSortBy => sortBy.value;
+  void setSortBy(value) {
+    sortBy.value = value;
+
+    sharedPref.write(
+      StringConstants.spDataSortBy,
+      value,
+    );
+  }
+
+  // sort order shared pref getter setter
+  String get getSortOrder => sortOrder.value;
+  void setSortOrder(value) {
+    sortOrder.value = value;
+
+    sharedPref.write(
+      StringConstants.spDataSortOrder,
+      value,
+    );
+  }
+
+  // current git page shared pref getter setter
+  int get getCurrentGitRepoPage => currentGitRepoPage.value;
+  void setCurrentGitRepoPage(value) {
+    currentGitRepoPage.value = value;
+
+    sharedPref.write(
+      StringConstants.spDataCurrentGitRepoPage,
+      value,
     );
   }
 }

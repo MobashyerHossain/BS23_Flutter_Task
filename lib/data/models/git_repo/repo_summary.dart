@@ -64,7 +64,7 @@ class GitRepoSummary {
         url: json["url"],
         description: json["description"],
         language: json["language"],
-        fork: json["fork"],
+        fork: json["fork"] == 1,
         createdAt: json["created_at"] == null
             ? null
             : DateTime.parse(json["created_at"]),

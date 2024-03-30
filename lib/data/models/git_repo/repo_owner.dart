@@ -1,4 +1,3 @@
-import '../../enums/git_repo/enum_values.dart';
 import '../../enums/git_repo/owner_type.dart';
 
 class RepoOwner {

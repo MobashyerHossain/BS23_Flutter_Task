@@ -16,4 +16,11 @@ class GitRepoApi {
       '${ApiConstants.gitRepoBaseApi}q=$query&page=$page&per_page=$perPage&sort=$sortBy&direction=$sortOrder',
     );
   }
+
+  // Get all Repositories
+  Future<Response> getRepo(String url) {
+    return dio.get(
+      url,
+    );
+  }
 }

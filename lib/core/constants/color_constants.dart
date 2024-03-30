@@ -15,7 +15,7 @@ class ColorConstants {
     'KOTLIN': '#F18E33',
     'TYPESCRIPT': '#007ACC',
     'SCALA': '#DC322F',
-    'RUST': '#000000',
+    'RUST': '#6D6D78',
     'HTML': '#E34F26',
     'CSS': '#264DE4',
     'SQL': '#FFD700',
@@ -40,11 +40,22 @@ class ColorConstants {
     // Check if the language is in the map
     if (languageColorMap.containsKey(languageKey)) {
       String colorHex = languageColorMap[languageKey]!;
-      return Color(int.parse(colorHex.substring(1), radix: 16) + 0xFF000000);
+      return Color(
+        int.parse(
+              colorHex.substring(1),
+              radix: 16,
+            ) +
+            0xFF000000,
+      );
     } else {
       // Return default color if language not found
       return Color(
-          int.parse(defaultColorHex.substring(1), radix: 16) + 0xFF000000);
+        int.parse(
+              defaultColorHex.substring(1),
+              radix: 16,
+            ) +
+            0xFF000000,
+      );
     }
   }
 }

@@ -8,7 +8,6 @@ import 'package:starflare/data/models/git_repo/repo_license.dart';
 import 'package:starflare/data/models/git_repo/repo_owner.dart';
 
 import '../../enums/git_repo/default_branch.dart';
-import '../../enums/git_repo/enum_values.dart';
 import '../../enums/git_repo/visibility_type.dart';
 
 List<GitRepository> gitRepositoryFromJson(String str) =>
