@@ -2,15 +2,20 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:starflare/data/enums/git_repo/sort_by.dart';
 import 'package:starflare/data/enums/git_repo/sort_order.dart';
+import 'package:starflare/data/models/git_repo/git_user.dart';
 import 'package:starflare/data/repositories/git_repo_repository.dart';
 import 'package:logger/logger.dart';
+import 'package:starflare/data/repositories/git_user_repository.dart';
 
 import '../../../data/database/git_repo_db.dart';
+import '../../../data/models/git_repo/repo.dart';
 import '../../../data/models/git_repo/repo_summary.dart';
 import '../../../global/controllers/shared_preference_controller.dart';
+import '../../../routes/app_routes.dart';
 
 class GitRepoController extends GetxController {
   final GitRepoRepository gitRepoRepository;
+  final GitUserRepository gitUserRepository;
   final gitRepoDatabase = GitRepoDatabase();
 
   final SharedPrefController sharedPrefController =
@@ -21,9 +26,12 @@ class GitRepoController extends GetxController {
 
   final RxInt gitRepoTotalCount = 0.obs;
   final RxBool isLoadingGitRepoSummaries = true.obs;
-  final RxInt gitRepoCurrentPage = 0.obs;
+  final RxInt gitRepoCurrentPage = 1.obs;
 
-  GitRepoController(this.gitRepoRepository);
+  GitRepoController(
+    this.gitRepoRepository,
+    this.gitUserRepository,
+  );
 
   @override
   Future<void> onInit() async {
@@ -98,8 +106,6 @@ class GitRepoController extends GetxController {
           }
         }
 
-        Logger().d("Total Count: ${getGitRepoSummaries.length}");
-
         setIsLoadingGitRepoSummaries(false);
 
         // save updated page no into local storage
@@ -109,20 +115,49 @@ class GitRepoController extends GetxController {
 
         // update git repo current page
         setGitRepoCurrentPage(
-          getGitRepoCurrentPage + 1,
+          sharedPrefController.getCurrentGitRepoPage,
         );
 
         Logger().d("Current Page: $getGitRepoCurrentPage");
+        Logger().d("Total Count: ${getGitRepoSummaries.length}");
       },
-    ).onError(
-      (error, stackTrace) {
-        Logger().e(error.toString());
-        Logger().e(stackTrace.toString());
+    );
+  }
 
-        // Assuming you have access to the BuildContext
-        Get.snackbar(
-          "Server Error",
-          "Frequest Scrolling Detected.",
+  Future<void> showRepo(url) async {
+    GitRepository? gitRepo;
+    GitUser? gitUser;
+
+    gitRepoRepository
+        .getRepoByUrl(
+      url,
+    )
+        .then(
+      (response1) async {
+        gitRepo = GitRepository.fromJson(
+          response1.data,
+        );
+
+        print(gitRepo!.owner!.url);
+
+        gitUserRepository
+            .getGitUserByUrl(
+          gitRepo?.owner?.url,
+        )
+            .then(
+          (response2) async {
+            gitUser = GitUser.fromJson(
+              response2.data,
+            );
+
+            Get.toNamed(
+              Routes.GITREPODETAIL,
+              arguments: {
+                'gitRepo': gitRepo,
+                'gitUser': gitUser,
+              },
+            );
+          },
         );
       },
     );

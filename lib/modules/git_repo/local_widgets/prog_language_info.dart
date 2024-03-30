@@ -6,9 +6,11 @@ class ProgLanguageInfo extends StatelessWidget {
   const ProgLanguageInfo({
     super.key,
     required this.language,
+    this.fontSize = 12.0,
   });
 
   final String language;
+  final double fontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class ProgLanguageInfo extends StatelessWidget {
       children: [
         Icon(
           Icons.circle_rounded,
-          size: 12.0,
+          size: fontSize,
           color: ColorConstants.getColorByLanguage(language),
         ),
         const SizedBox(
@@ -25,8 +27,8 @@ class ProgLanguageInfo extends StatelessWidget {
         ),
         Text(
           language,
-          style: const TextStyle(
-            fontSize: 12.0,
+          style: TextStyle(
+            fontSize: fontSize,
             fontWeight: FontWeight.bold,
           ),
         )

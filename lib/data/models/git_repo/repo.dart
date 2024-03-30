@@ -4,6 +4,7 @@
 
 import 'dart:convert';
 
+import 'package:intl/intl.dart';
 import 'package:starflare/data/models/git_repo/repo_license.dart';
 import 'package:starflare/data/models/git_repo/repo_owner.dart';
 
@@ -377,4 +378,39 @@ class GitRepository {
         "default_branch": defaultBranchValues.reverse[defaultBranch],
         "score": score,
       };
+
+  String getUpdatedAt() {
+    if (updatedAt == null) {
+      return 'Unknown';
+    } else {
+      final formattedDate = DateFormat('M-dd-yyyy hh:ss').format(updatedAt!);
+      return formattedDate;
+    }
+  }
+
+  String getCreatedAt() {
+    if (createdAt == null) {
+      return 'Unknown';
+    } else {
+      final formattedDate = DateFormat('M-dd-yyyy hh:ss').format(createdAt!);
+      return formattedDate;
+    }
+  }
+
+  String getPushedAt() {
+    if (pushedAt == null) {
+      return 'Unknown';
+    } else {
+      final formattedDate = DateFormat('M-dd-yyyy hh:ss').format(pushedAt!);
+      return formattedDate;
+    }
+  }
+
+  String getTopics() {
+    if (topics != null) {
+      return topics!.join(', ');
+    } else {
+      return "Unknown";
+    }
+  }
 }

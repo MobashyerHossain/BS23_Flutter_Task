@@ -17,8 +17,15 @@ class GitRepoApi {
     );
   }
 
-  // Get all Repositories
-  Future<Response> getRepo(String url) {
+  // Get Repository by Url
+  Future<Response> getRepoByUrl(String url) {
+    return dio.get(
+      url,
+    );
+  }
+
+  // Get User by Url
+  Future<Response> getUserByUrl(String url) {
     return dio.get(
       url,
     );

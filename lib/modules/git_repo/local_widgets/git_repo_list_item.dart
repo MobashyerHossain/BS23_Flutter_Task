@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:starflare/routes/app_routes.dart';
 
 import '../../../data/models/git_repo/repo_summary.dart';
 import '../../../global/widgets/circular_chip.dart';
+import '../business_logic/git_repo_controller.dart';
 import 'prog_language_info.dart';
 
 class GitRepoListItem extends StatelessWidget {
@@ -16,18 +16,16 @@ class GitRepoListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final GitRepoController gitRepoController =
+        Get.find<GitRepoController>(tag: 'gitRepoController');
+
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: 3.0,
       ),
       child: GestureDetector(
         onTap: () {
-          Get.toNamed(
-            Routes.GITREPODETAIL,
-            arguments: {
-              'gitRepoSummary': gitRepoSummary,
-            },
-          );
+          gitRepoController.showRepo(gitRepoSummary.url);
         },
         child: ListTile(
           title: Row(

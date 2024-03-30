@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
 
 import '../../services/providers/git_repo_api.dart';
 
@@ -25,12 +26,29 @@ class GitRepoRepository extends GetxController {
       return response;
     } on Exception catch (e) {
       // Handle errors appropriately, e.g., using Get.snackbar
+      Logger().e(e.toString());
+
+      // Assuming you have access to the BuildContext
       Get.snackbar(
-        "Error",
-        "An error occurred while fetching data: ${e.toString()}",
-        snackPosition: SnackPosition.BOTTOM,
+        "Server Error",
+        "Frequest Scrolling Detected.",
       );
-      return null; // Or throw a specific exception for further handling
+    }
+  }
+
+  Future<dynamic> getRepoByUrl(url) async {
+    try {
+      final response = await gitRepoApi.getRepoByUrl(url);
+      return response;
+    } on Exception catch (e) {
+      // Handle errors appropriately, e.g., using Get.snackbar
+      Logger().e(e.toString());
+
+      // Assuming you have access to the BuildContext
+      Get.snackbar(
+        "Server Error",
+        "Repository not found",
+      );
     }
   }
 }
