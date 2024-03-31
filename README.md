@@ -53,11 +53,33 @@ Discover most starred Flutter repos! Scalable Flutter app w/ modular architectur
 Here are some screenshots of the project in action:
 
 ### Dark Mode
-![Screenshot 1](screenshots/dark_mode/git_repo_list.png)
-![Screenshot 2](screenshots/dark_mode/git_repo_details.png)
-![Screenshot 3](screenshots/dark_mode/end_drawer.png)
+<div style="display: flex; justify-content: space-between;">
+<div>
+ <img src="screenshots/dark_mode/git_repo_list.png" alt="Screenshot 1" width="250"/>
+ <p>Git Repo List (Verstical Scrollable)</p>
+</div>
+<div>
+ <img src="screenshots/dark_mode/git_repo_details.png" alt="Screenshot 2" width="250"/>
+ <p>Git Repo Details with User Data at top</p>
+</div>
+<div>
+ <img src="screenshots/dark_mode/end_drawer.png" alt="Screenshot 3" width="250"/>
+ <p>End Drawer with toggle options for App Theme, Sort Order and Sort Option</p>
+</div>
+</div>
 
-### Dark Mode
-![Screenshot 1](screenshots/light_mode/git_repo_list.png)
-![Screenshot 2](screenshots/light_mode/git_repo_details.png)
-![Screenshot 3](screenshots/light_mode/end_drawer.png)
+### Light Mode
+<div style="display: flex; justify-content: space-between;">
+<div>
+ <img src="screenshots/light_mode/git_repo_list.png" alt="Screenshot 1" width="250"/>
+ <p>Git Repo List (Verstical Scrollable)</p>
+</div>
+<div>
+ <img src="screenshots/light_mode/git_repo_details.png" alt="Screenshot 2" width="250"/>
+ <p>Git Repo Details with User Data at top</p>
+</div>
+<div>
+ <img src="screenshots/light_mode/end_drawer.png" alt="Screenshot 3" width="250"/>
+ <p>End Drawer with toggle options for App Theme, Sort Order and Sort Option</p>
+</div>
+</div>
