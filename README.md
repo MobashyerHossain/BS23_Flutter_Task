@@ -93,6 +93,9 @@ Here are some screenshots of the Application in action:
   </div>
 </div>
 
+|:-------------------------:|:-------------------------:|:-------------------------:|
+|<img src="screenshots/dark_mode/git_repo_details.png" alt="Screenshot 2" style="max-width: 30%; height: auto;" />|<img src="screenshots/dark_mode/git_repo_details.png" alt="Screenshot 2" style="max-width: 30%; height: auto;" />|<img src="screenshots/dark_mode/git_repo_details.png" alt="Screenshot 2" style="max-width: 30%; height: auto;" />|
+
 ### Light Mode
 <div style="display: flex; justify-content: space-between; flex-wrap: nowrap; overflow-x: auto;">
     <div style="flex: 0 0 auto; margin-right: 10px;">
