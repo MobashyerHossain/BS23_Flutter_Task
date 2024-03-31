@@ -77,32 +77,16 @@ Here are some screenshots of the Application in action:
 
 ### Dark Mode / Light Mode
 <div>
-<img src="screenshots/dark_mode/git_repo_list.png" width="40%"><img src="screenshots/light_mode/git_repo_list.png" width="40%">
+<img src="screenshots/dark_mode/git_repo_list.png" width="45% padding: 0 20px;"><img src="screenshots/light_mode/git_repo_list.png" width="45% padding: 0 20px;">
 <p style="text-align: center;">Git Repo List (Verstical Scrollable)</p>
 </div>
 <div>
-<img src="screenshots/dark_mode/git_repo_details.png" width="40%"><img src="screenshots/light_mode/git_repo_details.png" width="40%">
+<img src="screenshots/dark_mode/git_repo_details.png" width="45% padding: 0 20px;"><img src="screenshots/light_mode/git_repo_details.png" width="45% padding: 0 20px;">
 <p style="text-align: center;">Git Repo Details with User Data at top</p>
 </div>
 <div>
-<img src="screenshots/dark_mode/end_drawer.png" width="40%"><img src="screenshots/light_mode/end_drawer.png" width="40%">
+<img src="screenshots/dark_mode/end_drawer.png" width="45% padding: 0 20px;"><img src="screenshots/light_mode/end_drawer.png" width="45% padding: 0 20px;">
 <p style="text-align: center;">End Drawer with toggle options for App Theme, Sort Order and Sort Option</p>
-</div>
-
-### Light Mode
-<div style="display: flex; justify-content: space-between; flex-wrap: nowrap; overflow-x: auto;">
-    <div style="flex: 0 0 auto; margin-right: 10px;">
-        <img src="screenshots/light_mode/git_repo_list.png" alt="Screenshot 1" width="30%"/>
-        <p style="text-align: center;">Git Repo List (Verstical Scrollable)</p>
-    </div>
-    <div style="flex: 0 0 auto; margin-right: 10px;">
-        <img src="screenshots/light_mode/git_repo_details.png" alt="Screenshot 2" width="30%"/>
-        <p style="text-align: center;">Git Repo Details with User Data at top</p>
-    </div>
-    <div style="flex: 0 0 auto;">
-        <img src="screenshots/light_mode/end_drawer.png" alt="Screenshot 3" width="30%"/>
-        <p style="text-align: center;">End Drawer with toggle options for App Theme, Sort Order and Sort Option</p>
-    </div>
 </div>
 
 ## Contributing
