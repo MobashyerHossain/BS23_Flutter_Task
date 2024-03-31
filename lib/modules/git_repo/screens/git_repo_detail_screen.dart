@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:starflare/data/models/git_repo/git_user.dart';
 import 'package:starflare/data/models/git_repo/repo.dart';
 
-import '../../../global/widgets/circular_chip.dart';
+import '../../../global/widgets/helper_widgets/circular_chip.dart';
+import '../../../global/widgets/helper_widgets/topic_data_line.dart';
 import '../../../global/widgets/screen_layout.dart';
 import '../local_widgets/prog_language_info.dart';
+import 'user_summary.dart';
 
 class GitRepoDetailScreen extends StatefulWidget {
   const GitRepoDetailScreen({super.key});
@@ -37,7 +38,10 @@ class _GitRepoDetailScreenState extends State<GitRepoDetailScreen> {
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 15.0,
+                vertical: 8.0,
+              ),
               child: ListView(
                 children: [
                   Row(
@@ -58,11 +62,19 @@ class _GitRepoDetailScreenState extends State<GitRepoDetailScreen> {
                         width: 10.0,
                       ),
                       CircularChip(
-                        text: gitRepository.visibility.toString(),
+                        text: gitRepository.getVisibility(),
+                      ),
+                      const SizedBox(
+                        width: 10.0,
+                      ),
+                      CircularChip(
+                        text: gitRepository.getDefaultBranch(),
                       ),
                     ],
                   ),
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
                         children: [
@@ -75,106 +87,111 @@ class _GitRepoDetailScreenState extends State<GitRepoDetailScreen> {
                             width: 5.0,
                           ),
                           Text(
-                            "${gitRepository.stargazersCount}",
+                            gitRepository.getStargazersCount(),
                             style: const TextStyle(
                               fontSize: 15.0,
                             ),
                           ),
-                          const SizedBox(
-                            width: 20.0,
-                          ),
-                          Row(
-                            children: [
-                              const Icon(
-                                Icons.remove_red_eye,
-                                size: 17.0,
-                              ),
-                              const SizedBox(
-                                width: 5.0,
-                              ),
-                              Text(
-                                "${gitRepository.watchersCount}",
-                                style: const TextStyle(
-                                  fontSize: 15.0,
-                                ),
-                              )
-                            ],
-                          ),
-                          const SizedBox(
-                            width: 20.0,
-                          ),
-                          ProgLanguageInfo(
-                            fontSize: 15.0,
-                            language: gitRepository.language!,
-                          ),
                         ],
+                      ),
+                      Row(
+                        children: [
+                          const Icon(
+                            Icons.remove_red_eye,
+                            size: 17.0,
+                          ),
+                          const SizedBox(
+                            width: 5.0,
+                          ),
+                          Text(
+                            gitRepository.getWatchersCount(),
+                            style: const TextStyle(
+                              fontSize: 15.0,
+                            ),
+                          )
+                        ],
+                      ),
+                      TopicDataLine(
+                        topic: "Score",
+                        data: gitRepository.getScore(),
+                      ),
+                      ProgLanguageInfo(
+                        fontSize: 15.0,
+                        language: gitRepository.getLanguage(),
                       ),
                     ],
                   ),
                   const SizedBox(
                     height: 5.0,
                   ),
-                  Text(
-                    "Created At: ${gitRepository.getCreatedAt()}",
-                    style: const TextStyle(
+                  TopicDataLine(
+                    topic: "Created At",
+                    data: gitRepository.getCreatedAt(),
+                  ),
+                  const SizedBox(
+                    height: 5.0,
+                  ),
+                  TopicDataLine(
+                    topic: "Last Updated At",
+                    data: gitRepository.getUpdatedAt(),
+                  ),
+                  const SizedBox(
+                    height: 5.0,
+                  ),
+                  TopicDataLine(
+                    topic: "Last Pushed At",
+                    data: gitRepository.getPushedAt(),
+                  ),
+                  const SizedBox(
+                    height: 5.0,
+                  ),
+                  TopicDataLine(
+                    topic: "Size",
+                    data: gitRepository.getSize(),
+                  ),
+                  const SizedBox(
+                    height: 5.0,
+                  ),
+                  const Text(
+                    "Topics",
+                    style: TextStyle(
                       fontSize: 15.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxWidth: MediaQuery.of(context).size.width,
+                      maxHeight: 30.0,
+                    ),
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: gitRepository.getTopics().length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: CircularChip(
+                              fontSize: 12.0,
+                              text: gitRepository.getTopics()[index],
+                            ),
+                          ),
+                        );
+                      },
                     ),
                   ),
                   const SizedBox(
                     height: 5.0,
                   ),
-                  Text(
-                    "Last Updated At: ${gitRepository.getUpdatedAt()}",
-                    style: const TextStyle(
+                  const Text(
+                    "Description",
+                    style: TextStyle(
                       fontSize: 15.0,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(
-                    height: 5.0,
-                  ),
                   Text(
-                    "Last Pushed At: ${gitRepository.getPushedAt()}",
-                    style: const TextStyle(
-                      fontSize: 15.0,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 5.0,
-                  ),
-                  Text(
-                    "Size: ${gitRepository.size}",
-                    style: const TextStyle(
-                      fontSize: 15.0,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 5.0,
-                  ),
-                  Text(
-                    "Topics: ${gitRepository.getTopics()}",
-                    style: const TextStyle(
-                      fontSize: 15.0,
-                    ),
-                  ),
-                  // SizedBox(
-                  //   width: 300,
-                  //   height: 30,
-                  //   child: ListView(
-                  //     scrollDirection: Axis.horizontal,
-                  //     children: gitRepository.topics!
-                  //         .map(
-                  //           (topic) => CircularChip(
-                  //             text: topic,
-                  //           ),
-                  //         )
-                  //         .toList(),
-                  //   ),
-                  // ),
-                  const SizedBox(
-                    height: 5.0,
-                  ),
-                  Text(
-                    "Description: ${gitRepository.description!}",
+                    gitRepository.description ?? 'No Description Provided',
                     style: const TextStyle(
                       fontSize: 15.0,
                     ),
@@ -185,87 +202,6 @@ class _GitRepoDetailScreenState extends State<GitRepoDetailScreen> {
           ),
         ],
       ),
-    );
-  }
-}
-
-class UserSummary extends StatelessWidget {
-  const UserSummary({
-    super.key,
-    required this.gitUser,
-  });
-
-  final GitUser gitUser;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(40.0),
-            child: CircleAvatar(
-              radius: 40.0,
-              child: Image.network(
-                gitUser.avatarUrl!,
-              ),
-            ),
-          ),
-        ),
-        Flexible(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      gitUser.name!,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.blueAccent,
-                        fontSize: 20.0,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 10.0,
-                    ),
-                    CircularChip(
-                      text: gitUser.type!,
-                    ),
-                  ],
-                ),
-                Text(
-                  "Public Repos : ${gitUser.publicRepos}",
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12.0,
-                  ),
-                ),
-                Text(
-                  "Followers : ${gitUser.followers}",
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12.0,
-                  ),
-                ),
-                Text(
-                  "Following : ${gitUser.following}",
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12.0,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
     );
   }
 }

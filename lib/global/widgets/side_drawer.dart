@@ -5,7 +5,7 @@ import 'package:starflare/modules/git_repo/business_logic/git_repo_controller.da
 
 import '../../data/enums/git_repo/sort_by.dart';
 import '../controllers/shared_preference_controller.dart';
-import 'theme_mode_toggle_button.dart';
+import 'helper_widgets/theme_mode_toggle_button.dart';
 
 class SideDrawer extends StatelessWidget {
   const SideDrawer({

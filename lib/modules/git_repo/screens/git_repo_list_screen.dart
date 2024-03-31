@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
@@ -16,6 +18,8 @@ class GitRepoListScreen extends StatefulWidget {
 }
 
 class _GitRepoListScreenState extends State<GitRepoListScreen> {
+  Timer? debounceTimer;
+
   final ScrollController gitRepoListScreenScroll = ScrollController(
     debugLabel: 'gitRepoListScreenScroll',
   );
@@ -39,14 +43,26 @@ class _GitRepoListScreenState extends State<GitRepoListScreen> {
   }
 
   void scrollListener() {
+    if (debounceTimer != null && debounceTimer!.isActive) {
+      // If the timer is active, ignore the scroll event.
+      return;
+    }
+
+    // Execute the logic immediately
     if (gitRepoListScreenScroll.offset >=
             gitRepoListScreenScroll.position.maxScrollExtent &&
         !gitRepoListScreenScroll.position.outOfRange) {
       gitRepoController.getRepos(
-        // page: 1,
         sortBy: sharedPrefController.getSortBy,
         sortOrder: sharedPrefController.getSortOrder,
       );
+
+      // Start the debounce timer
+      debounceTimer = Timer(const Duration(seconds: 2), () {
+        // Reset the debounce timer after 2 seconds
+        debounceTimer?.cancel();
+        debounceTimer = null;
+      });
     }
   }
 

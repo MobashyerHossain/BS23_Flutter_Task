@@ -4,9 +4,11 @@ class CircularChip extends StatelessWidget {
   const CircularChip({
     super.key,
     required this.text,
+    this.fontSize = 8.0,
   });
 
   final String text;
+  final double fontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,10 @@ class CircularChip extends StatelessWidget {
           ),
           child: Text(
             text,
-            style: const TextStyle(fontSize: 8.0, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              fontSize: fontSize,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),

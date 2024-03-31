@@ -11,7 +11,9 @@ class ScreenLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     return Scaffold(
+      key: scaffoldKey,
       endDrawer: const SideDrawer(),
       body: SafeArea(
         child: Column(
@@ -19,31 +21,38 @@ class ScreenLayout extends StatelessWidget {
           children: [
             const TopNavBar(),
             Expanded(
-              child: GetX<SharedPrefController>(
-                tag: "sharedPrefController",
-                builder: (sharedPrefController) {
-                  return Container(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 10.0,
-                    ),
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: sharedPrefController.getIsDark
-                            ? [
-                                Colors.black,
-                                Colors.black87,
-                              ]
-                            : [
-                                Colors.white,
-                                Colors.white70,
-                              ],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                      ),
-                    ),
-                    child: screen,
-                  );
+              child: GestureDetector(
+                onHorizontalDragUpdate: (details) {
+                  if (details.delta.dx < -6) {
+                    scaffoldKey.currentState?.openEndDrawer();
+                  }
                 },
+                child: GetX<SharedPrefController>(
+                  tag: "sharedPrefController",
+                  builder: (sharedPrefController) {
+                    return Container(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 10.0,
+                      ),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: sharedPrefController.getIsDark
+                              ? [
+                                  Colors.black,
+                                  Colors.black87,
+                                ]
+                              : [
+                                  Colors.white,
+                                  Colors.white70,
+                                ],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                        ),
+                      ),
+                      child: screen,
+                    );
+                  },
+                ),
               ),
             ),
           ],

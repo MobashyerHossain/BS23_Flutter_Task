@@ -21,38 +21,28 @@ class GitRepoSummary {
   final String? nodeId;
   final String? name;
   final String? fullName;
-  final String? htmlUrl;
   final String? url;
   final String? description;
   final String? language;
-  final bool? fork;
   final DateTime? createdAt;
   final DateTime? updatedAt;
   final DateTime? pushedAt;
   final Visibility? visibility;
-  final int? forks;
-  final int? watchers;
   final int? stargazersCount;
-  final double? score;
 
   GitRepoSummary({
     this.id,
     this.nodeId,
     this.name,
     this.fullName,
-    this.htmlUrl,
     this.url,
     this.description,
     this.language,
-    this.fork,
     this.createdAt,
     this.updatedAt,
     this.pushedAt,
     this.visibility,
-    this.forks,
-    this.watchers,
     this.stargazersCount,
-    this.score,
   });
 
   factory GitRepoSummary.fromJson(Map<String, dynamic> json) => GitRepoSummary(
@@ -60,11 +50,9 @@ class GitRepoSummary {
         nodeId: json["node_id"],
         name: json["name"],
         fullName: json["full_name"],
-        htmlUrl: json["html_url"],
         url: json["url"],
         description: json["description"],
         language: json["language"],
-        fork: json["fork"] == 1,
         createdAt: json["created_at"] == null
             ? null
             : DateTime.parse(json["created_at"]),
@@ -75,10 +63,7 @@ class GitRepoSummary {
             ? null
             : DateTime.parse(json["pushed_at"]),
         visibility: visibilityValues.map[json["visibility"]]!,
-        forks: json["forks"],
-        watchers: json["watchers"],
         stargazersCount: json["stargazers_count"],
-        score: json["score"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -86,19 +71,14 @@ class GitRepoSummary {
         "node_id": nodeId,
         "name": name,
         "full_name": fullName,
-        "html_url": htmlUrl,
         "url": url,
         "description": description,
         "language": language,
-        "fork": fork,
         "created_at": createdAt?.toIso8601String(),
         "updated_at": updatedAt?.toIso8601String(),
         "pushed_at": pushedAt?.toIso8601String(),
         "visibility": visibilityValues.reverse[visibility],
-        "forks": forks,
-        "watchers": watchers,
         "stargazers_count": stargazersCount,
-        "score": score,
       };
 
   String getFullName() {

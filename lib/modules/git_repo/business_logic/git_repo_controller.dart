@@ -128,39 +128,103 @@ class GitRepoController extends GetxController {
     GitRepository? gitRepo;
     GitUser? gitUser;
 
-    gitRepoRepository
-        .getRepoByUrl(
-      url,
-    )
-        .then(
-      (response1) async {
-        gitRepo = GitRepository.fromJson(
-          response1.data,
-        );
+    // Check if Repo exists in local Database
+    await gitRepoDatabase.getRepo(url).then((value) async {
+      if (value != null) {
+        gitRepo = value;
 
-        print(gitRepo!.owner!.url);
+        // Check if User exists in local Database
+        await gitRepoDatabase.getRepo(gitRepo!.ownerUrl!).then((value) async {
+          if (value != null) {
+            gitUser = gitUser;
 
-        gitUserRepository
-            .getGitUserByUrl(
-          gitRepo?.owner?.url,
-        )
-            .then(
-          (response2) async {
-            gitUser = GitUser.fromJson(
-              response2.data,
-            );
-
-            Get.toNamed(
+            return Get.toNamed(
               Routes.GITREPODETAIL,
               arguments: {
                 'gitRepo': gitRepo,
                 'gitUser': gitUser,
               },
             );
+          } else {
+            // fetch User Info for owner api
+            await gitUserRepository
+                .getGitUserByUrl(
+              gitRepo!.ownerUrl,
+            )
+                .then(
+              (value) async {
+                gitUser = GitUser.fromJson(
+                  value.data,
+                );
+
+                // Add new gitUser into the local database for future
+                if (gitUser != null) {
+                  await gitRepoDatabase.insertUser(
+                    gitUser!,
+                  );
+                }
+
+                return Get.toNamed(
+                  Routes.GITREPODETAIL,
+                  arguments: {
+                    'gitRepo': gitRepo,
+                    'gitUser': gitUser,
+                  },
+                );
+              },
+            );
+          }
+        });
+      } else {
+        // fetch Repo Info for repo api
+        gitRepoRepository
+            .getRepoByUrl(
+          url,
+        )
+            .then(
+          (response1) async {
+            gitRepo = GitRepository.fromJson(
+              response1.data,
+            );
+
+            // Add new gitRepo into the local database for future
+            if (gitRepo != null) {
+              await gitRepoDatabase.insertRepo(
+                gitRepo!,
+              );
+            }
+
+            // fetch User Info for owner api
+            gitUserRepository
+                .getGitUserByUrl(
+              gitRepo!.ownerUrl,
+            )
+                .then(
+              (response2) async {
+                gitUser = GitUser.fromJson(
+                  response2.data,
+                );
+
+                // Add new gitUser into the local database for future
+                if (gitUser != null) {
+                  await gitRepoDatabase.insertUser(
+                    gitUser!,
+                  );
+                }
+
+                return Get.toNamed(
+                  Routes.GITREPODETAIL,
+                  arguments: {
+                    'gitRepo': gitRepo,
+                    'gitUser': gitUser,
+                  },
+                );
+              },
+            );
           },
         );
-      },
-    );
+      }
+    });
   }
 
   void sortRepos() {
