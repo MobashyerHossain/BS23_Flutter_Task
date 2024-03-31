@@ -79,12 +79,10 @@ Here are some screenshots of the Application in action:
 <div width="30%">
 <img src="screenshots/dark_mode/git_repo_list.png" width="30%">
 <p style="text-align: center;">Git Repo List (Verstical Scrollable)</p>
-</div>
-<div width="30%">
+</div><div width="30%">
 <img src="screenshots/dark_mode/git_repo_details.png" width="30%">
 <p style="text-align: center;">Git Repo Details with User Data at top</p>
-</div>
-<div width="30%">
+</div><div width="30%">
 <img src="screenshots/dark_mode/end_drawer.png" width="30%">
 <p style="text-align: center;">End Drawer with toggle options for App Theme, Sort Order and Sort Option</p>
 </div>
