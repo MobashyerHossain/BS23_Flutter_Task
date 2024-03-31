@@ -26,6 +26,8 @@ These measures collectively contribute to the robustness, scalability, and maint
 
 
 ## Project Structure
+Here is the basic structure followed thoughout the project.
+
 - lib
     - app
         -main_dev.dart
@@ -71,6 +73,33 @@ These measures collectively contribute to the robustness, scalability, and maint
     - services
         - database
         - providers
+
+## Project Architecure
+This Flutter project follows a modular structure for better organization and scalability. Here's a brief overview of its structure:
+
+- lib: This is the main directory for the project's Dart code.
+  - app: Contains different main files for various environments (development, QA, production).
+  - core: Houses essential components used throughout the project.
+    - constants: Holds constant values like API endpoints, colors, database names, etc.
+    - utils: Contains utility functions and classes, such as dependency injection setup.
+  - data: Deals with data-related operations.
+    - enums: Enumerations used within data operations, organized by domain (e.g., git_repo).
+    - models: Data models representing entities like git repositories and users.
+    - repositories: Classes responsible for handling data retrieval and manipulation from different sources (e.g., APIs, databases).
+  - global: Contains global-level components.
+    - controllers: Controllers for managing shared preferences and other global states.
+    - widgets: Reusable widgets and helper functions.
+  - modules: Modular components of the application.
+    - git_repo: A module focusing on git repositories.
+      - business_logic: Contains classes for binding and controlling business logic related to git repositories.
+      - local_widgets: Local widgets specific to the git repository module.
+      - screens: Screens related to git repositories.
+  - routes: Handles navigation and routing within the application.
+    - app_pages.dart: Defines all available routes in the application.
+    - app_routes.dart: Contains functions to navigate between routes.
+  - services: External services utilized by the application.
+    - database: Database-related services.
+    - providers: Services providing data to different parts of the application.
 
 ## App Screenshots
 Here are some screenshots of the Application in action:
