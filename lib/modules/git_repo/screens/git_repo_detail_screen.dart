@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:starflare/data/models/git_repo/git_user.dart';
-import 'package:starflare/data/models/git_repo/repo.dart';
+import 'package:starflare/data/models/git_repo/git_repo.dart';
 
-import '../../../global/widgets/helper_widgets/circular_chip.dart';
-import '../../../global/widgets/helper_widgets/topic_data_line.dart';
+import '../../../global/widgets/helpers/circular_chip.dart';
+import '../../../global/widgets/helpers/topic_data_line.dart';
 import '../../../global/widgets/screen_layout.dart';
 import '../local_widgets/prog_language_info.dart';
-import 'user_summary.dart';
+import '../local_widgets/user_summary.dart';
 
 class GitRepoDetailScreen extends StatefulWidget {
   const GitRepoDetailScreen({super.key});

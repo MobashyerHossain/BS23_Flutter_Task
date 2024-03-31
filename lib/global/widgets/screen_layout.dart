@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:starflare/global/controllers/shared_preference_controller.dart';
+import 'package:starflare/global/controllers/shared_pref_controller.dart';
 
 import 'side_drawer.dart';
 import 'top_nav_bar.dart';

@@ -5,7 +5,7 @@ import 'package:get_storage/get_storage.dart';
 
 import '../core/constants/string_constants.dart';
 import '../core/utils/dependency_injection.dart';
-import '../global/controllers/shared_preference_controller.dart';
+import '../global/controllers/shared_pref_controller.dart';
 import '../routes/app_pages.dart';
 import '../routes/app_routes.dart';
 

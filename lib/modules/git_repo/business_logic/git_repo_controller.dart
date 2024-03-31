@@ -7,10 +7,10 @@ import 'package:starflare/data/repositories/git_repo_repository.dart';
 import 'package:logger/logger.dart';
 import 'package:starflare/data/repositories/git_user_repository.dart';
 
-import '../../../data/database/git_repo_db.dart';
-import '../../../data/models/git_repo/repo.dart';
+import '../../../services/database/git_repo_db.dart';
+import '../../../data/models/git_repo/git_repo.dart';
 import '../../../data/models/git_repo/repo_summary.dart';
-import '../../../global/controllers/shared_preference_controller.dart';
+import '../../../global/controllers/shared_pref_controller.dart';
 import '../../../routes/app_routes.dart';
 
 class GitRepoController extends GetxController {

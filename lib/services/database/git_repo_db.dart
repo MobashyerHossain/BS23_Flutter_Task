@@ -1,10 +1,10 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:starflare/data/models/git_repo/git_user.dart';
-import 'package:starflare/data/models/git_repo/repo.dart';
+import 'package:starflare/data/models/git_repo/git_repo.dart';
 
 import '../../core/constants/db_constants.dart';
-import '../models/git_repo/repo_summary.dart';
+import '../../data/models/git_repo/repo_summary.dart';
 
 class GitRepoDatabase {
   late Database database;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../controllers/shared_preference_controller.dart';
+import '../controllers/shared_pref_controller.dart';
 
 class TopNavBar extends StatelessWidget {
   const TopNavBar({

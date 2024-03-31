@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../data/models/git_repo/git_user.dart';
-import '../../../global/widgets/helper_widgets/circular_chip.dart';
-import '../../../global/widgets/helper_widgets/topic_data_line.dart';
+import '../../../global/widgets/helpers/circular_chip.dart';
+import '../../../global/widgets/helpers/topic_data_line.dart';
 
 class UserSummary extends StatelessWidget {
   const UserSummary({

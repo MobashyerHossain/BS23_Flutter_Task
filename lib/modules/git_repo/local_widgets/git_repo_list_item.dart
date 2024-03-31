@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../data/models/git_repo/repo_summary.dart';
-import '../../../global/widgets/helper_widgets/circular_chip.dart';
+import '../../../global/widgets/helpers/circular_chip.dart';
 import '../business_logic/git_repo_controller.dart';
 import 'prog_language_info.dart';
 

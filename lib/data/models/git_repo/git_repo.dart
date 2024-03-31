@@ -69,42 +69,43 @@ class GitRepository {
     this.score,
   });
 
-  factory GitRepository.fromJson(Map<String, dynamic> json) => GitRepository(
-        id: json["id"],
-        nodeId: json["node_id"],
-        name: json["name"],
-        fullName: json["full_name"],
-        ownerUrl: json["owner"] == null
-            ? null
-            : RepoOwner.fromJson(
-                json["owner"],
-              ).url,
-        url: json["url"],
-        description: json["description"],
-        languagesUrl: json["languages_url"],
-        createdAt: json["created_at"] == null
-            ? null
-            : DateTime.parse(json["created_at"]),
-        updatedAt: json["updated_at"] == null
-            ? null
-            : DateTime.parse(json["updated_at"]),
-        pushedAt: json["pushed_at"] == null
-            ? null
-            : DateTime.parse(json["pushed_at"]),
-        size: json["size"],
-        stargazersCount: json["stargazers_count"],
-        watchersCount: json["watchers_count"],
-        language: json["language"],
-        topics: json["topics"] == null
-            ? []
-            : List<String>.from(
-                json["topics"]!.map((x) => x),
-              ),
-        visibility: visibilityValues.map[json["visibility"]]!,
-        watchers: json["watchers"],
-        defaultBranch: defaultBranchValues.map[json["default_branch"]]!,
-        score: json["score"],
-      );
+  factory GitRepository.fromJson(Map<String, dynamic> json) {
+    return GitRepository(
+      id: json["id"],
+      nodeId: json["node_id"],
+      name: json["name"],
+      fullName: json["full_name"],
+      ownerUrl: json["owner"] == null
+          ? null
+          : RepoOwner.fromJson(
+              json["owner"],
+            ).url,
+      url: json["url"],
+      description: json["description"],
+      languagesUrl: json["languages_url"],
+      createdAt: json["created_at"] == null
+          ? null
+          : DateTime.parse(json["created_at"]),
+      updatedAt: json["updated_at"] == null
+          ? null
+          : DateTime.parse(json["updated_at"]),
+      pushedAt:
+          json["pushed_at"] == null ? null : DateTime.parse(json["pushed_at"]),
+      size: json["size"],
+      stargazersCount: json["stargazers_count"],
+      watchersCount: json["watchers_count"],
+      language: json["language"],
+      topics: json["topics"] == null
+          ? []
+          : List<String>.from(
+              json["topics"]!.map((x) => x),
+            ),
+      visibility: visibilityValues.map[json["visibility"]]!,
+      watchers: json["watchers"],
+      defaultBranch: defaultBranchValues.map[json["default_branch"]]!,
+      score: json["score"],
+    );
+  }
 
   factory GitRepository.fromDatabase(Map<String, dynamic> json) {
     return GitRepository(

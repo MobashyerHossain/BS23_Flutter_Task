@@ -6,7 +6,7 @@ import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:starflare/data/models/git_repo/repo_summary.dart';
 import 'package:starflare/global/widgets/screen_layout.dart';
 
-import '../../../global/controllers/shared_preference_controller.dart';
+import '../../../global/controllers/shared_pref_controller.dart';
 import '../business_logic/git_repo_controller.dart';
 import '../local_widgets/git_repo_list_item.dart';
 
