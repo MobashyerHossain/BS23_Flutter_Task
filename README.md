@@ -93,14 +93,7 @@ Here are some screenshots of the Application in action:
   </div>
 </div>
 
-![Git Repo List (Verstical Scrollable)](screenshots/dark_mode/git_repo_list.png)
-Git Repo List (Vertical Scrollable)
-
-![Git Repo Details with User Data at top](screenshots/dark_mode/git_repo_details.png)
-Git Repo Details with User Data at top
-
-![End Drawer with toggle options for App Theme, Sort Order and Sort Option](screenshots/dark_mode/end_drawer.png)
-End Drawer with toggle options for App Theme, Sort Order and Sort Option
+<img src="screenshots/dark_mode/git_repo_details.png" width="300"> <img src="screenshots/dark_mode/git_repo_details.png" width="300"> <img src="screenshots/dark_mode/git_repo_details.png">
 
 ### Light Mode
 <div style="display: flex; justify-content: space-between; flex-wrap: nowrap; overflow-x: auto;">
