@@ -26,7 +26,7 @@ class SplashScreen extends StatelessWidget {
             child: FadeOut(
               child: ElasticIn(
                 child: Image.asset(
-                  'assets/logos/github2.png',
+                  'assets/logos/github.png',
                 ),
               ),
             ),

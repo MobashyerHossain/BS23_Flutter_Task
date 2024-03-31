@@ -1,5 +1,29 @@
-# BS23_Flutter_Task
+<div align="center">
+  <img src="screenshots/icons/starflare.png" alt="App Logo" width="150"/>
+  <h1>StarFlare</h1>
+</div>
+
+# StarFlare
 Discover most starred Flutter repos! Scalable Flutter app w/ modular architecture, state management &amp; clean code principles. Leverages GitHub API &amp; displays name, description &amp; star count.
+
+## Project Details
+In this project, I utilized various tools and methodologies to ensure efficiency and reliability:
+
+1. **GetX as the Preferred State Manager**: Leveraged GetX for its simplicity and robustness in managing application state.
+
+2. **Get_storage for Local Storage**: Utilized Get_storage as the preferred local storage solution, providing seamless access to persistent data akin to shared preferences.
+
+3. **SQLite for Local Database**: Employed SQLite as the local database to store fetched data from APIs, effectively mitigating redundant API calls and enhancing overall performance.
+
+4. **GetX Repository Pattern**: Implemented the GetX Repository pattern, ensuring a clear and effective abstraction layer between the API client and the application, facilitating better maintainability and scalability.
+
+5. **Application Flavors**: Utilized 3 App Flavors—DEV, QA, and PROD—for distinct environments: 
+   - *Development*: Facilitates rapid development and debugging.
+   - *Quality Check*: Ensures thorough testing and validation before deployment.
+   - *Production*: For the final release version, ensuring stability and reliability in a production environment.
+
+These measures collectively contribute to the robustness, scalability, and maintainability of the project.
+
 
 ## Project Structure
 - lib
@@ -48,38 +72,43 @@ Discover most starred Flutter repos! Scalable Flutter app w/ modular architectur
         - database
         - providers
 
-## Screenshots
-
-Here are some screenshots of the project in action:
+## App Screenshots
+Here are some screenshots of the Application in action:
 
 ### Dark Mode
-<div style="display: flex; justify-content: space-between;">
-<div>
- <img src="screenshots/dark_mode/git_repo_list.png" alt="Screenshot 1" width="250"/>
- <p>Git Repo List (Verstical Scrollable)</p>
-</div>
-<div>
- <img src="screenshots/dark_mode/git_repo_details.png" alt="Screenshot 2" width="250"/>
- <p>Git Repo Details with User Data at top</p>
-</div>
-<div>
- <img src="screenshots/dark_mode/end_drawer.png" alt="Screenshot 3" width="250"/>
- <p>End Drawer with toggle options for App Theme, Sort Order and Sort Option</p>
-</div>
+<div style="display: flex; justify-content: space-between; flex-wrap: nowrap; overflow-x: auto;">
+    <div style="flex: 0 0 auto; margin-right: 10px;">
+        <img src="screenshots/dark_mode/git_repo_list.png" alt="Screenshot 1" width="250"/>
+        <p style="text-align: center;">Git Repo List (Verstical Scrollable)</p>
+    </div>
+    <div style="flex: 0 0 auto; margin-right: 10px;">
+        <img src="screenshots/dark_mode/git_repo_details.png" alt="Screenshot 2" width="250"/>
+        <p style="text-align: center;">Git Repo Details with User Data at top</p>
+    </div>
+    <div style="flex: 0 0 auto;">
+        <img src="screenshots/dark_mode/end_drawer.png" alt="Screenshot 3" width="250"/>
+        <p style="text-align: center;">End Drawer with toggle options for App Theme, Sort Order and Sort Option</p>
+    </div>
 </div>
 
 ### Light Mode
-<div style="display: flex; justify-content: space-between;">
-<div>
- <img src="screenshots/light_mode/git_repo_list.png" alt="Screenshot 1" width="250"/>
- <p>Git Repo List (Verstical Scrollable)</p>
+<div style="display: flex; justify-content: space-between; flex-wrap: nowrap; overflow-x: auto;">
+    <div style="flex: 0 0 auto; margin-right: 10px;">
+        <img src="screenshots/light_mode/git_repo_list.png" alt="Screenshot 1" width="250"/>
+        <p style="text-align: center;">Git Repo List (Verstical Scrollable)</p>
+    </div>
+    <div style="flex: 0 0 auto; margin-right: 10px;">
+        <img src="screenshots/light_mode/git_repo_details.png" alt="Screenshot 2" width="250"/>
+        <p style="text-align: center;">Git Repo Details with User Data at top</p>
+    </div>
+    <div style="flex: 0 0 auto;">
+        <img src="screenshots/light_mode/end_drawer.png" alt="Screenshot 3" width="250"/>
+        <p style="text-align: center;">End Drawer with toggle options for App Theme, Sort Order and Sort Option</p>
+    </div>
 </div>
-<div>
- <img src="screenshots/light_mode/git_repo_details.png" alt="Screenshot 2" width="250"/>
- <p>Git Repo Details with User Data at top</p>
-</div>
-<div>
- <img src="screenshots/light_mode/end_drawer.png" alt="Screenshot 3" width="250"/>
- <p>End Drawer with toggle options for App Theme, Sort Order and Sort Option</p>
-</div>
-</div>
+
+## Contributing
+Contributions are welcome! Please fork the repository and submit a pull request.
+
+## License
+This project is licensed under the [MIT License](LICENSE).

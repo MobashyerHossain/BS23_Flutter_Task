@@ -36,7 +36,7 @@ class TopNavBar extends StatelessWidget {
               tag: "sharedPrefController",
               builder: (sharedPrefController) {
                 return Image.asset(
-                  'assets/logos/github2.png',
+                  'assets/logos/github.png',
                   color: sharedPrefController.getIsDark
                       ? Colors.white
                       : Colors.black,
