@@ -92,9 +92,15 @@ Here are some screenshots of the Application in action:
     </div>
   </div>
 </div>
-<!-- 
-|:-------------------------:|:-------------------------:|:-------------------------:|
-|<img src="screenshots/dark_mode/git_repo_details.png" alt="Screenshot 2" style="width: 30%; height: auto;" />|<img src="screenshots/dark_mode/git_repo_details.png" alt="Screenshot 2" style="width: 30%; height: auto;" />|<img src="screenshots/dark_mode/git_repo_details.png" alt="Screenshot 2" style="width: 30%; height: auto;" />| -->
+
+![Git Repo List (Verstical Scrollable)](screenshots/dark_mode/git_repo_list.png)
+Git Repo List (Vertical Scrollable)
+
+![Git Repo Details with User Data at top](screenshots/dark_mode/git_repo_details.png)
+Git Repo Details with User Data at top
+
+![End Drawer with toggle options for App Theme, Sort Order and Sort Option](screenshots/dark_mode/end_drawer.png)
+End Drawer with toggle options for App Theme, Sort Order and Sort Option
 
 ### Light Mode
 <div style="display: flex; justify-content: space-between; flex-wrap: nowrap; overflow-x: auto;">
