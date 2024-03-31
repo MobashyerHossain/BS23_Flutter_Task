@@ -93,7 +93,7 @@ Here are some screenshots of the Application in action:
   </div>
 </div>
 
-<img src="screenshots/dark_mode/git_repo_details.png" width="300"> <img src="screenshots/dark_mode/git_repo_details.png" width="300"> <img src="screenshots/dark_mode/git_repo_details.png">
+<img src="screenshots/dark_mode/git_repo_details.png" width="300"> <img src="screenshots/dark_mode/git_repo_details.png" width="300"> <img src="screenshots/dark_mode/git_repo_details.png" width="300">
 
 ### Light Mode
 <div style="display: flex; justify-content: space-between; flex-wrap: nowrap; overflow-x: auto;">
