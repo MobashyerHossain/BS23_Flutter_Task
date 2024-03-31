@@ -58,8 +58,8 @@ class _GitRepoListScreenState extends State<GitRepoListScreen> {
       );
 
       // Start the debounce timer
-      debounceTimer = Timer(const Duration(seconds: 2), () {
-        // Reset the debounce timer after 2 seconds
+      debounceTimer = Timer(const Duration(seconds: 3), () {
+        // Reset the debounce timer after 3 seconds
         debounceTimer?.cancel();
         debounceTimer = null;
       });

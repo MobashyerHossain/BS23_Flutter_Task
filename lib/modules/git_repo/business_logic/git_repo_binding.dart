@@ -9,6 +9,7 @@ class GitRepoBinding implements Bindings {
   @override
   void dependencies() {
     Get.put<GitRepoController>(
+      tag: 'gitRepoController',
       GitRepoController(
         GitRepoRepository(
           GitRepoApi(),
@@ -17,7 +18,6 @@ class GitRepoBinding implements Bindings {
           GitUserApi(),
         ),
       ),
-      tag: 'gitRepoController',
     );
   }
 }

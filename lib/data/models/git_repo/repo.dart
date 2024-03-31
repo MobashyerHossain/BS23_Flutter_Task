@@ -107,7 +107,6 @@ class GitRepository {
       );
 
   factory GitRepository.fromDatabase(Map<String, dynamic> json) {
-    print(json["topics"]);
     return GitRepository(
       id: json["id"],
       nodeId: json["node_id"],

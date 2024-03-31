@@ -5,18 +5,22 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "starflare",
+            "name": "starflare-DEV",
+            "program": "lib/app/main_dev.dart",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "flutterMode": "debug"
         },
         {
-            "name": "starflare (profile mode)",
+            "name": "starflare-QA",
+            "program": "lib/app/main_qa.dart",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "starflare (release mode)",
+            "name": "starflare-PROD",
+            "program": "lib/app/main_prod.dart",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"

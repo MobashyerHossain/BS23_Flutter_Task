@@ -120,8 +120,6 @@ class GitRepoDatabase {
       return -1; // You can return any value indicating a conflict
     }
 
-    print(repo.toJson());
-
     return await database.insert(
       DBConstants.gitRepoTable,
       repo.toJson(),
