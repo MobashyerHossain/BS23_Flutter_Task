@@ -76,23 +76,23 @@ These measures collectively contribute to the robustness, scalability, and maint
 Here are some screenshots of the Application in action:
 
 ### Dark Mode
-:-------------------------:|:-------------------------:|:-------------------------:
+<!-- :-------------------------:|:-------------------------:|:-------------------------:
 ![Screenshot 1](screenshots/dark_mode/git_repo_list.png)|![Screenshot 2](screenshots/dark_mode/git_repo_list.png)|![Screenshot 3](screenshots/dark_mode/git_repo_list.png)
 Git Repo List (Verstical Limitless Scrollable)|Git Repo Details with User Data at Top|End Drawer with toggle options for App Theme, Sort Order and Sort Option
-
+ -->
 
 ### Light Mode
 <div style="display: flex; justify-content: space-between; flex-wrap: nowrap; overflow-x: auto;">
     <div style="flex: 0 0 auto; margin-right: 10px;">
-        <img src="screenshots/light_mode/git_repo_list.png" alt="Screenshot 1" width="250"/>
+        <img src="screenshots/light_mode/git_repo_list.png" alt="Screenshot 1" width="30%"/>
         <p style="text-align: center;">Git Repo List (Verstical Scrollable)</p>
     </div>
     <div style="flex: 0 0 auto; margin-right: 10px;">
-        <img src="screenshots/light_mode/git_repo_details.png" alt="Screenshot 2" width="250"/>
+        <img src="screenshots/light_mode/git_repo_details.png" alt="Screenshot 2" width="30%"/>
         <p style="text-align: center;">Git Repo Details with User Data at top</p>
     </div>
     <div style="flex: 0 0 auto;">
-        <img src="screenshots/light_mode/end_drawer.png" alt="Screenshot 3" width="250"/>
+        <img src="screenshots/light_mode/end_drawer.png" alt="Screenshot 3" width="30%"/>
         <p style="text-align: center;">End Drawer with toggle options for App Theme, Sort Order and Sort Option</p>
     </div>
 </div>
