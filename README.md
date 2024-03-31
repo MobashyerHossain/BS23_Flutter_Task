@@ -76,15 +76,17 @@ These measures collectively contribute to the robustness, scalability, and maint
 Here are some screenshots of the Application in action:
 
 ### Dark Mode / Light Mode
-<div>
+<div align="center">
 <img src="screenshots/dark_mode/git_repo_list.png" width="45% padding: 0 20px;"><img src="screenshots/light_mode/git_repo_list.png" width="45% padding: 0 20px;">
 <p style="text-align: center;">Git Repo List (Verstical Scrollable)</p>
 </div>
-<div>
+
+<div align="center">
 <img src="screenshots/dark_mode/git_repo_details.png" width="45% padding: 0 20px;"><img src="screenshots/light_mode/git_repo_details.png" width="45% padding: 0 20px;">
 <p style="text-align: center;">Git Repo Details with User Data at top</p>
 </div>
-<div>
+
+<div align="center">
 <img src="screenshots/dark_mode/end_drawer.png" width="45% padding: 0 20px;"><img src="screenshots/light_mode/end_drawer.png" width="45% padding: 0 20px;">
 <p style="text-align: center;">End Drawer with toggle options for App Theme, Sort Order and Sort Option</p>
 </div>
